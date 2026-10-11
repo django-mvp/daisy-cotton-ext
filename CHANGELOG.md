@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.4.0] - 2026-10-11
+
 ### Added
 
 - A footer family. `<c-footer.columns>` puts the brand in one corner beside columns of links,

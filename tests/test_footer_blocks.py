@@ -106,7 +106,8 @@ class TestTheLinks:
         assert '<nav aria-label="Site"' in html
 
     @pytest.mark.parametrize(
-        "tag", ["c-footer.centred", "c-footer.slim", "c-footer.banner", "c-footer.legal"]
+        "tag",
+        ["c-footer.centred", "c-footer.slim", "c-footer.banner", "c-footer.legal"],
     )
     def test_no_links_means_no_container_for_them(self, render, tag) -> None:
         html = render(footer(tag, 'notice="© Meridian"', inside=""))
@@ -119,7 +120,9 @@ class TestTheBrand:
     @pytest.mark.parametrize("tag", ["c-footer.columns", "c-footer.centred"])
     def test_the_logo_and_tagline_are_shown(self, render, tag) -> None:
         html = render(
-            footer(tag, 'tagline="Ships daily"', LINK + slot("logo", '<b id="logo"></b>'))
+            footer(
+                tag, 'tagline="Ships daily"', LINK + slot("logo", '<b id="logo"></b>')
+            )
         )
 
         assert html.count('id="logo"') == 1
@@ -189,7 +192,9 @@ class TestTheCopyrightLine:
 
     def test_the_part_draws_its_rule_only_when_asked(self, render) -> None:
         assert "dce:border-t" not in render('<c-footer.legal notice="© Meridian" />')
-        assert "dce:border-t" in render('<c-footer.legal divided notice="© Meridian" />')
+        assert "dce:border-t" in render(
+            '<c-footer.legal divided notice="© Meridian" />'
+        )
 
     def test_the_part_names_its_links(self, render) -> None:
         html = render(footer("c-footer.legal", 'label="Small print"'))
@@ -224,7 +229,9 @@ class TestTheBanner:
         assert re.search(r"<h3[^>]*>Stay in touch</h3>", html) is not None
 
     def test_a_title_slot_carries_markup(self, render) -> None:
-        html = render(footer("c-footer.banner", inside=slot("title", "Stay <em>in</em>")))
+        html = render(
+            footer("c-footer.banner", inside=slot("title", "Stay <em>in</em>"))
+        )
 
         assert re.search(r"<h2[^>]*>Stay <em>in</em></h2>", html) is not None
 

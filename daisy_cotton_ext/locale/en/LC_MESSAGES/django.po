@@ -44,3 +44,11 @@ msgstr ""
 #: templates/cotton/stats/change.html:23
 msgid "Up"
 msgstr ""
+
+#: templates/cotton/footer/centred.html:24 templates/cotton/footer/slim.html:18
+msgid "Footer"
+msgstr ""
+
+#: templates/cotton/footer/legal.html:30
+msgid "Legal"
+msgstr ""

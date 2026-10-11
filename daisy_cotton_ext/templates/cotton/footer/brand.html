@@ -1,0 +1,16 @@
+{# @description Who the site belongs to, for the corner of a footer: a logo, a sentence under it, and a row for social links. Any of the three can be left out. #}
+{# @prop tagline:text | description:"The sentence under the logo: what the product is, in one line" #}
+{# @prop align:select['start', 'centre'] | default:"start" | description:"Against the start edge, or stacked and centred" #}
+{# @prop invert:boolean | default:False | description:"Leave the tagline at the surrounding colour, for a dark or coloured surface" #}
+{# @prop class:text | description:"Extra classes on the wrapper" #}
+{# @slot:logo <a href="/" class="dce:text-xl dce:font-bold">Meridian</a> — The logo or wordmark. Write the link to the home page yourself. #}
+{# @slot <a class="btn btn-ghost btn-sm" href="#">GitHub</a> — Under the tagline. Social links as daisy-cotton buttons, usually. An icon-only button needs an aria-label. #}
+<c-vars tagline align="start" invert class />
+<div class="dce:flex dce:flex-col dce:gap-4 {% if align == 'centre' %}dce:items-center dce:text-center{% else %}dce:items-start{% endif %} {{ class }}"
+     {{ attrs }}>
+  {% if logo %}<div>{{ logo }}</div>{% endif %}
+  {% if tagline %}
+    <p class="dce:max-w-xs dce:text-sm dce:leading-relaxed {% if not invert %}dce:text-base-content/80{% endif %}">{{ tagline }}</p>
+  {% endif %}
+  {% if slot.strip %}<div class="dce:-mx-2 dce:flex dce:flex-wrap dce:gap-1">{{ slot }}</div>{% endif %}
+</div>

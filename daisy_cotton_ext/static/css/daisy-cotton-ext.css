@@ -224,6 +224,9 @@
   .dce\:m-40 {
     margin: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 40);
   }
+  .dce\:-mx-2 {
+    margin-inline: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * -2);
+  }
   .dce\:mx-14 {
     margin-inline: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 14);
   }
@@ -283,6 +286,9 @@
   }
   .dce\:mt-4 {
     margin-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 4);
+  }
+  .dce\:mt-10 {
+    margin-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 10);
   }
   .dce\:mt-14 {
     margin-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 14);
@@ -485,6 +491,9 @@
   .dce\:max-w-xl {
     max-width: var(--dce-container-xl, 36rem);
   }
+  .dce\:max-w-xs {
+    max-width: var(--dce-container-xs, 20rem);
+  }
   .dce\:min-w-0 {
     min-width: 0px;
   }
@@ -610,6 +619,9 @@
   .dce\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  .dce\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .dce\:grid-cols-\[minmax\(0\,1fr\)_auto\] {
     grid-template-columns: minmax(0,1fr) auto;
   }
@@ -717,11 +729,23 @@
   .dce\:gap-x-4 {
     column-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 4);
   }
+  .dce\:gap-x-6 {
+    column-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 6);
+  }
+  .dce\:gap-x-8 {
+    column-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 8);
+  }
   .dce\:gap-x-16 {
     column-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 16);
   }
   .dce\:gap-y-1 {
     row-gap: var(--dce-spacing, var(--spacing, 0.25rem));
+  }
+  .dce\:gap-y-2 {
+    row-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 2);
+  }
+  .dce\:gap-y-3 {
+    row-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 3);
   }
   .dce\:gap-y-4 {
     row-gap: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 4);
@@ -782,6 +806,12 @@
   }
   .dce\:border-base-300 {
     border-color: var(--dce-color-base-300, var(--color-base-300));
+  }
+  .dce\:border-current\/10 {
+    border-color: currentcolor;
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, currentcolor 10%, transparent);
+    }
   }
   .dce\:border-neutral {
     border-color: var(--dce-color-neutral, var(--color-neutral));
@@ -1164,6 +1194,9 @@
   }
   .dce\:pt-8 {
     padding-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 8);
+  }
+  .dce\:pt-10 {
+    padding-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 10);
   }
   .dce\:pt-14 {
     padding-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 14);
@@ -2045,8 +2078,17 @@
     .dce\:sm\:col-span-2 {
       grid-column: span 2 / span 2;
     }
+    .dce\:sm\:auto-cols-fr {
+      grid-auto-columns: minmax(0, 1fr);
+    }
+    .dce\:sm\:grid-flow-col {
+      grid-auto-flow: column;
+    }
     .dce\:sm\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .dce\:sm\:grid-cols-none {
+      grid-template-columns: none;
     }
     .dce\:sm\:flex-row {
       flex-direction: row;
@@ -2173,6 +2215,9 @@
     .dce\:md\:my-40 {
       margin-block: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 40);
     }
+    .dce\:md\:mt-12 {
+      margin-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 12);
+    }
     .dce\:md\:mt-14 {
       margin-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 14);
     }
@@ -2232,6 +2277,12 @@
     }
     .dce\:md\:grid-cols-5 {
       grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .dce\:md\:flex-row {
+      flex-direction: row;
+    }
+    .dce\:md\:items-center {
+      align-items: center;
     }
     .dce\:md\:justify-between {
       justify-content: space-between;
@@ -2334,6 +2385,9 @@
     .dce\:md\:py-40 {
       padding-block: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 40);
     }
+    .dce\:md\:pt-12 {
+      padding-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 12);
+    }
     .dce\:md\:pt-14 {
       padding-top: calc(var(--dce-spacing, var(--spacing, 0.25rem)) * 14);
     }
@@ -2398,6 +2452,12 @@
     }
     .dce\:lg\:col-span-1 {
       grid-column: span 1 / span 1;
+    }
+    .dce\:lg\:col-span-2 {
+      grid-column: span 2 / span 2;
+    }
+    .dce\:lg\:col-span-3 {
+      grid-column: span 3 / span 3;
     }
     .dce\:lg\:col-span-5 {
       grid-column: span 5 / span 5;
@@ -2537,6 +2597,9 @@
     .dce\:lg\:flex-none {
       flex: none;
     }
+    .dce\:lg\:shrink-0 {
+      flex-shrink: 0;
+    }
     .dce\:lg\:columns-2 {
       columns: 2;
     }
@@ -2563,6 +2626,9 @@
     }
     .dce\:lg\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .dce\:lg\:grid-cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
     .dce\:lg\:grid-cols-12 {
       grid-template-columns: repeat(12, minmax(0, 1fr));

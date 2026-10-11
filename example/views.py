@@ -34,6 +34,10 @@ SUMMARIES: dict[str, dict[str, str]] = {
         "block": "Five frames for a sign-in form. The form stays your application's."
     },
     "sign-up": {"block": "Four sign-up pages that put the pitch beside the form."},
+    "footer": {
+        "component": "The brand corner and the copyright line the footers are made of.",
+        "block": "The end of a page: columns of links, one centred stack, a single line, or a last request.",
+    },
     "background": {
         "component": "Glows, gradients, grids and moving layers, in the theme's own colours."
     },

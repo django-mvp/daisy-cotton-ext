@@ -124,6 +124,11 @@ EASY_ICONS = {
             "microsoft": "bi bi-microsoft",
             "passkey": "bi bi-fingerprint",
             "mail": "bi bi-envelope",
+            # The social links in the footers.
+            "mastodon": "bi bi-mastodon",
+            "linkedin": "bi bi-linkedin",
+            "youtube": "bi bi-youtube",
+            "rss": "bi bi-rss",
         },
     }
 }

@@ -1,0 +1,32 @@
+{# @description The last line of a footer: the copyright notice at one end and the small links at the other. Stacks on a phone. #}
+{# @prop notice:text | description:"The copyright line: © 2026 Meridian GmbH" #}
+{# @prop label:text | default:"Legal" | description:"The name assistive technology gives the group of links" #}
+{# @prop align:select['between', 'centre'] | default:"between" | description:"Notice and links at opposite ends, or stacked and centred" #}
+{# @prop divided:boolean | default:False | description:"Draw a rule above the line, for when it closes a taller footer" #}
+{# @prop invert:boolean | default:False | description:"Leave the line at the surrounding colour, for a dark or coloured surface" #}
+{# @prop class:text | description:"Extra classes on the wrapper" #}
+{# @slot <a class="link link-hover" href="#">Privacy</a><a class="link link-hover" href="#">Terms</a> — The small links: privacy, terms, imprint. #}
+{# @slot:start — Before the notice. A logo, when the footer has no brand corner. #}
+{# @slot:end — After the links. Social links, or a language or theme picker. #}
+{% comment %}
+  The rule is drawn in the text's own colour at a tenth of its strength, so it
+  follows `invert` and any surface without a colour of its own to keep in step.
+{% endcomment %}
+<c-vars notice label="Legal" align="between" divided invert class />
+<div class="dce:flex dce:flex-col dce:gap-4 dce:text-sm
+            {% if align == 'centre' %}dce:items-center dce:text-center{% else %}dce:md:flex-row dce:md:items-center dce:md:justify-between{% endif %}
+            {% if divided %}dce:border-t dce:border-current/10 dce:pt-6{% endif %}
+            {% if not invert %}dce:text-base-content/80{% endif %}
+            {{ class }}"
+     {{ attrs }}>
+  {% if start or notice %}
+    <div class="dce:flex dce:flex-wrap dce:items-center dce:gap-x-4 dce:gap-y-2 {% if align == 'centre' %}dce:flex-col{% endif %}">
+      {{ start }}
+      {% if notice %}<p>{{ notice }}</p>{% endif %}
+    </div>
+  {% endif %}
+  {% if slot.strip %}
+    <nav aria-label="{{ label }}" class="dce:flex dce:flex-wrap dce:gap-x-6 dce:gap-y-2 {% if align == 'centre' %}dce:justify-center{% endif %}">{{ slot }}</nav>
+  {% endif %}
+  {% if end %}<div class="dce:-mx-2 dce:flex dce:flex-wrap dce:items-center dce:gap-1">{{ end }}</div>{% endif %}
+</div>

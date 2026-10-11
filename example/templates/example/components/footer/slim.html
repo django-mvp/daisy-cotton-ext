@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Slim{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-footer.slim">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">
+      The footer for pages where the footer is not the point: a dashboard, a sign-in page, documentation. One line from a tablet up. On a phone the notice, the links and the social links stack in that order.
+    </p>
+  </c-demo.head>
+
+  <c-demo.live label="Everything it holds, on a surface colour" anchor="full">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.slim class="bg-base-200" notice="© 2026 Meridian GmbH">
+  <c-slot name="logo"><c-demo.logo /></c-slot>
+  <c-link hover href="#" text="Privacy" />
+  <c-link hover href="#" text="Terms" />
+  <c-link hover href="#" text="Status" />
+  <c-slot name="social">
+    <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+    …
+  </c-slot>
+</c-footer.slim>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.slim class="bg-base-200" notice="© 2026 Meridian GmbH">
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-link hover href="#" text="Privacy" />
+      <c-link hover href="#" text="Terms" />
+      <c-link hover href="#" text="Status" />
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+    </c-footer.slim>
+  </c-demo.live>
+
+  <c-demo.live label="A notice and links, with a rule above it" anchor="rule">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.slim class="border-t border-base-300" notice="© 2026 Meridian GmbH">
+  <c-link hover href="#" text="Privacy" />
+  <c-link hover href="#" text="Terms" />
+  <c-link hover href="#" text="Status" />
+</c-footer.slim>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.slim class="border-t border-base-300" notice="© 2026 Meridian GmbH">
+      <c-link hover href="#" text="Privacy" />
+      <c-link hover href="#" text="Terms" />
+      <c-link hover href="#" text="Status" />
+    </c-footer.slim>
+  </c-demo.live>
+
+  <c-demo.live label="Inverted on a dark surface, held wide" anchor="invert">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.slim invert container="wide" class="bg-neutral" notice="© 2026 Meridian GmbH">…</c-footer.slim>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.slim invert container="wide" class="bg-neutral" notice="© 2026 Meridian GmbH">
+      <c-slot name="logo"><c-demo.logo mark-class="" /></c-slot>
+      <c-link hover href="#" text="Privacy" />
+      <c-link hover href="#" text="Terms" />
+      <c-link hover href="#" text="Status" />
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+    </c-footer.slim>
+  </c-demo.live>
+
+  <c-demo.live label="The notice alone, then a long notice with more links than the line wants" anchor="counts">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.slim class="bg-base-200" notice="© 2026 Meridian GmbH" />{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.slim class="bg-base-200" notice="© 2026 Meridian GmbH" />
+    <c-footer.slim class="bg-base-200" notice="© 2026 Meridian Gesellschaft für Softwareauslieferung mbH, Berlin. All rights reserved.">
+      <c-link hover href="#" text="Privacy" />
+      <c-link hover href="#" text="Terms" />
+      <c-link hover href="#" text="Imprint" />
+      <c-link hover href="#" text="Data processing agreement" />
+      <c-link hover href="#" text="Security and compliance" />
+      <c-link hover href="#" text="Status" />
+      <c-link hover href="#" text="Support" />
+    </c-footer.slim>
+  </c-demo.live>
+{% endblock content %}

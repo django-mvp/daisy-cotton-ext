@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- A footer family. `<c-footer.columns>` puts the brand in one corner beside columns of links,
+  `<c-footer.centred>` stacks a logo and one row of links on the centre line, `<c-footer.slim>` is
+  a single line for application pages, and `<c-footer.banner>` opens with a heading and a slot for
+  a form or a button. Each is the page's `footer` element, takes `logo`, `social` and
+  `background` slots where it has room for them, and fills its columns with daisy-cotton's
+  `<c-footer.nav>`. `<c-footer.brand>` and `<c-footer.legal>` are the brand corner and the
+  copyright line they share, usable on their own.
+
+### Changed
+
+- The blocks now rely on daisyUI's `footer`, `footer-title` and `link-hover` classes from the
+  project, all part of daisyUI 5.
+
 ## [v0.3.1] - 2026-10-07
 
 ### Changed

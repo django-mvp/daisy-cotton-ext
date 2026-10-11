@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}Banner{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-footer.banner">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">
+      For the visitor who read to the end and has not acted yet. The banner asks for one thing, and what it asks with is yours: the <code>actions</code> slot takes your application's own form, or a button. The forms below are stand-ins that go nowhere. With no brand corner, the logo moves down to the copyright line.
+    </p>
+  </c-demo.head>
+
+  <c-demo.live label="A newsletter form, on a surface colour" anchor="full">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.banner class="bg-base-200" title="Release notes, once a month" lead="What shipped, what broke and what we changed because of it. No other mail." notice="© 2026 Meridian GmbH">
+  <c-slot name="actions">
+    <form action="…" method="post" class="join">…</form>
+  </c-slot>
+  <c-footer.nav title="Product">…</c-footer.nav>
+  <c-footer.nav title="Resources">…</c-footer.nav>
+  <c-footer.nav title="Company">…</c-footer.nav>
+  <c-slot name="logo"><c-demo.logo /></c-slot>
+  <c-slot name="legal">…</c-slot>
+  <c-slot name="social">…</c-slot>
+</c-footer.banner>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.banner class="bg-base-200" title="Release notes, once a month" lead="What shipped, what broke and what we changed because of it. No other mail." notice="© 2026 Meridian GmbH">
+      <c-slot name="actions">
+        <form action="#" method="get" class="join">
+          <label class="sr-only" for="footer-email-full">Email address</label>
+          <input id="footer-email-full" class="input join-item" type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          <button class="btn btn-primary join-item" type="submit">Subscribe</button>
+        </form>
+      </c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+    </c-footer.banner>
+  </c-demo.live>
+
+  <c-demo.live label="Buttons in place of a form, inverted on a dark surface" anchor="invert">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.banner invert class="bg-neutral" title="See it deploy your own service" lead="…" notice="© 2026 Meridian GmbH">
+  <c-slot name="actions">
+    <c-button variant="primary" href="#" text="Book a demo" />
+    <c-button outline href="#" text="Read the docs" />
+  </c-slot>
+  …
+</c-footer.banner>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.banner invert class="bg-neutral" title="See it deploy your own service" lead="Half an hour with an engineer, on a repository you bring." notice="© 2026 Meridian GmbH">
+      <c-slot name="actions">
+        <c-button variant="primary" href="#" text="Book a demo" />
+        <c-button outline href="#" text="Read the docs" />
+      </c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-slot name="logo"><c-demo.logo mark-class="" /></c-slot>
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+    </c-footer.banner>
+  </c-demo.live>
+
+  <c-demo.live label="Over a background, with markup in the title" anchor="background">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.banner notice="© 2026 Meridian GmbH">
+  <c-slot name="background"><c-background.glow /></c-slot>
+  <c-slot name="title">Ship on Friday. <c-text.gradient>Sleep on Friday.</c-text.gradient></c-slot>
+  …
+</c-footer.banner>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.banner notice="© 2026 Meridian GmbH">
+      <c-slot name="background"><c-background.glow /></c-slot>
+      <c-slot name="title">Ship on Friday. <c-text.gradient>Sleep on Friday.</c-text.gradient></c-slot>
+      <c-slot name="actions">
+        <c-button variant="primary" href="#" text="Start free" />
+      </c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+    </c-footer.banner>
+  </c-demo.live>
+
+  <c-demo.live label="The banner and a notice, no columns" anchor="bare">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.banner class="bg-base-200" title="Release notes, once a month" notice="© 2026 Meridian GmbH">
+  <c-slot name="actions">…</c-slot>
+</c-footer.banner>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.banner class="bg-base-200" title="Release notes, once a month" notice="© 2026 Meridian GmbH">
+      <c-slot name="actions">
+        <form action="#" method="get" class="join">
+          <label class="sr-only" for="footer-email-bare">Email address</label>
+          <input id="footer-email-bare" class="input join-item" type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          <button class="btn btn-primary join-item" type="submit">Subscribe</button>
+        </form>
+      </c-slot>
+    </c-footer.banner>
+  </c-demo.live>
+
+  <c-demo.live label="A long heading, a long lead and six columns" anchor="long">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.banner class="bg-base-200" title="…" lead="…">…</c-footer.banner>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.banner class="bg-base-200" title="Release notes, incident reviews and the occasional long read about deploying software" lead="One mail on the first Monday of the month. It covers what shipped, what broke, what we changed because of it and anything we wrote that was worth your time. You can leave with one click from any of them." notice="© 2026 Meridian Gesellschaft für Softwareauslieferung mbH, Berlin. All rights reserved.">
+      <c-slot name="actions">
+        <form action="#" method="get" class="join">
+          <label class="sr-only" for="footer-email-long">Email address</label>
+          <input id="footer-email-long" class="input join-item" type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          <button class="btn btn-primary join-item" type="submit">Subscribe</button>
+        </form>
+      </c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-footer.nav title="Compare">
+        <c-link hover href="#" text="Against a deploy script" />
+        <c-link hover href="#" text="Against your CI's own steps" />
+      </c-footer.nav>
+      <c-footer.nav title="Integrations">
+        <c-link hover href="#" text="GitHub Actions" />
+        <c-link hover href="#" text="GitLab pipelines" />
+        <c-link hover href="#" text="Kubernetes" />
+      </c-footer.nav>
+      <c-footer.nav title="Legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Data processing agreement" />
+      </c-footer.nav>
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+    </c-footer.banner>
+  </c-demo.live>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Copyright line{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-footer.legal">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">
+      The line every footer here ends on, and the whole of the slim one. Use it on its own under a footer you lay out yourself.
+    </p>
+  </c-demo.head>
+
+  <c-demo.live label="A notice and links, under a rule" anchor="full">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.legal divided notice="© 2026 Meridian GmbH">
+  <c-link hover href="#" text="Privacy" />
+  <c-link hover href="#" text="Terms" />
+  <c-link hover href="#" text="Imprint" />
+</c-footer.legal>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-container class="py-10">
+      <c-footer.legal divided notice="© 2026 Meridian GmbH">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-footer.legal>
+    </c-container>
+  </c-demo.live>
+
+  <c-demo.live label="With a logo before it and social links after" anchor="ends">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.legal notice="© 2026 Meridian GmbH">
+  <c-slot name="start"><c-demo.logo /></c-slot>
+  <c-link hover href="#" text="Privacy" />
+  …
+  <c-slot name="end">
+    <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+    …
+  </c-slot>
+</c-footer.legal>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-container class="py-10">
+      <c-footer.legal notice="© 2026 Meridian GmbH">
+        <c-slot name="start"><c-demo.logo /></c-slot>
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+        <c-slot name="end">
+          <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+        </c-slot>
+      </c-footer.legal>
+    </c-container>
+  </c-demo.live>
+
+  <c-demo.live label="Centred" anchor="centred">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.legal align="centre" notice="© 2026 Meridian GmbH">…</c-footer.legal>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-container class="py-10">
+      <c-footer.legal align="centre" notice="© 2026 Meridian GmbH">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-footer.legal>
+    </c-container>
+  </c-demo.live>
+{% endblock content %}

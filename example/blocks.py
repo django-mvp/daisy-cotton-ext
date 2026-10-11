@@ -238,6 +238,19 @@ FAMILIES: tuple[Family, ...] = (
         ),
     ),
     Family(
+        slug="footer",
+        label="Footers",
+        kind="block",
+        components=(
+            Component("columns", "Columns", group="Blocks"),
+            Component("centred", "Centred", group="Blocks"),
+            Component("slim", "Slim", group="Blocks"),
+            Component("banner", "Banner", group="Blocks"),
+            Component("brand", "Brand", group="Parts", kind="component"),
+            Component("legal", "Copyright line", group="Parts", kind="component"),
+        ),
+    ),
+    Family(
         slug="parts",
         label="Page parts",
         kind="component",

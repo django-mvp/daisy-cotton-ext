@@ -28,7 +28,7 @@ Blocks are configured through attributes and take their colours from whatever da
 
 ## Status
 
-Version 0.0.1. Eleven families are built: the section and its columns, the heading, heroes, backgrounds, text effects, reveals, quotes, stats, points, sign-in pages and sign-up pages. Nothing here is stable. Block names, attributes and the set of classes the stylesheet emits all change between minor versions, and the [CHANGELOG](https://github.com/django-mvp/daisy-cotton-ext/blob/main/CHANGELOG.md) is how a project finds out.
+Version 0.0.1. Twelve families are built: the section and its columns, the heading, heroes, backgrounds, text effects, reveals, quotes, stats, footers, points, sign-in pages and sign-up pages. Nothing here is stable. Block names, attributes and the set of classes the stylesheet emits all change between minor versions, and the [CHANGELOG](https://github.com/django-mvp/daisy-cotton-ext/blob/main/CHANGELOG.md) is how a project finds out.
 
 ## Scope & philosophy
 
@@ -469,6 +469,69 @@ Things to know before using one:
 - **The band takes a `background` slot,** like the heroes, and `invert` for a dark one.
 
 The reasoning is in [ADR 0008](docs/adr/0008-stats-draw-no-charts.md) and [ADR 0009](docs/adr/0009-a-count-is-started-by-scroll-and-timed-by-the-clock.md).
+
+### Footers
+
+A footer closes the page: the links the navigation bar has no room for, who the site belongs to, and the small print. Four are blocks, and two are the parts those blocks are made of.
+
+| Tag | What it does | Its own attributes |
+|---|---|---|
+| `<c-footer.columns>` | The brand in one corner, columns of links beside it, the copyright line underneath | `tagline`, `notice` |
+| `<c-footer.centred>` | The logo, one row of links, the social links and the copyright line, all centred | `tagline`, `notice`, `label` |
+| `<c-footer.slim>` | One line: logo and notice at one end, a few links and the social links at the other | `notice`, `label` |
+| `<c-footer.banner>` | A heading with a form or a button across the top, then the columns of links | `title`, `lead`, `level`, `notice` |
+| `<c-footer.brand>` | The logo, a sentence under it and a row for social links | `tagline`, `align`, `invert` |
+| `<c-footer.legal>` | The copyright notice at one end and the small links at the other | `notice`, `label`, `align`, `divided`, `invert` |
+
+Every block also takes `container`, `invert` and `class`. The slots share their names across the blocks:
+
+| Slot | What goes in it |
+|---|---|
+| default | The links. Columns and banner take one of daisy-cotton's `<c-footer.nav>` for each column. Centred and slim take the links themselves. |
+| `logo` | The logo or wordmark, linked to the home page |
+| `social` | Social links, as daisy-cotton buttons |
+| `legal` | The small links on the copyright line: privacy, terms, imprint. Not on slim, whose links are these already. |
+| `background` | A background block behind the footer. Not on slim. |
+| `actions` | Banner only: the form or the button the banner asks with |
+
+```html
+<c-footer.columns class="bg-base-200" tagline="Releases you can roll back with one click." notice="© 2026 Meridian GmbH">
+  <c-slot name="logo"><a href="/"><img src="{% static 'img/logo.svg' %}" alt="Meridian" /></a></c-slot>
+  <c-slot name="social">
+    <c-button ghost size="sm" class="btn-square" icon="github" href="https://github.com/meridian" aria-label="Meridian on GitHub" />
+  </c-slot>
+  <c-footer.nav title="Product">
+    <c-link hover href="/pricing/" text="Pricing" />
+    <c-link hover href="/changelog/" text="Changelog" />
+  </c-footer.nav>
+  <c-footer.nav title="Company">
+    <c-link hover href="/about/" text="About" />
+    <c-link hover href="/careers/" text="Careers" />
+  </c-footer.nav>
+  <c-slot name="legal">
+    <c-link hover href="/privacy/" text="Privacy" />
+    <c-link hover href="/terms/" text="Terms" />
+  </c-slot>
+</c-footer.columns>
+
+<c-footer.slim notice="© 2026 Meridian GmbH">
+  <c-link hover href="/privacy/" text="Privacy" />
+  <c-link hover href="/status/" text="Status" />
+</c-footer.slim>
+```
+
+Things to know before using one:
+
+- **Each block is the page's `footer` element.** Put it outside `main` and outside any `section` or `article`, or assistive technology stops announcing it as the end of the page. Use one to a page.
+- **The surface is yours.** A block sets no background colour. Pass one in `class`, and add `invert` when it is a dark one such as `bg-neutral`.
+- **A block needs daisyUI's `footer` component from the project,** as well as `link` and `btn` for what goes in the slots.
+- **Columns sit two abreast on a phone and in one row from the `sm` breakpoint.** Three or four read best. Beside the brand corner, six leave each one little room.
+- **An icon-only social link needs an `aria-label`.** The icon says nothing to a screen reader.
+- **The banner ships no form.** Its `actions` slot takes your application's own, with its own address, token and validation.
+- **Anything left out leaves nothing behind.** No logo, tagline or social links, and the columns take the full width. No notice and no small links, and there is no copyright line or rule.
+- **The two parts work on their own.** Use `<c-footer.brand>` and `<c-footer.legal>` inside daisy-cotton's `<c-footer>`, or under a footer you lay out yourself.
+
+The reasoning is in [ADR 0013](docs/adr/0013-a-footer-block-is-the-footer-element.md).
 
 Every attribute, its accepted values and its default are listed on each block's and component's own page in the example project, built from the annotations in the block's template. Run it with `python manage.py runserver` from a checkout.
 

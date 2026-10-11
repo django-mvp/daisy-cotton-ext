@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Columns{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-footer.columns">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">
+      The columns are daisy-cotton's own <code>c-footer.nav</code> and the links its <code>c-link</code>, so nothing here is new to learn. The block adds the brand corner, the copyright line and the way the whole thing stacks: brand first, then the groups two abreast on a phone and in one row from a tablet up. The surface is yours, through <code>class</code>.
+    </p>
+  </c-demo.head>
+
+  <c-demo.live label="Everything it holds, on a surface colour" anchor="full">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.columns class="bg-base-200" tagline="Releases you can roll back with one click, for teams that ship every day." notice="© 2026 Meridian GmbH">
+  <c-slot name="logo"><c-demo.logo /></c-slot>
+  <c-slot name="social">
+    <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+    …
+  </c-slot>
+  <c-footer.nav title="Product">
+    <c-link hover href="#" text="Deploys" />
+    …
+  </c-footer.nav>
+  <c-footer.nav title="Resources">…</c-footer.nav>
+  <c-footer.nav title="Company">…</c-footer.nav>
+  <c-slot name="legal">
+    <c-link hover href="#" text="Privacy" />
+    …
+  </c-slot>
+</c-footer.columns>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.columns class="bg-base-200" tagline="Releases you can roll back with one click, for teams that ship every day." notice="© 2026 Meridian GmbH">
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+    </c-footer.columns>
+  </c-demo.live>
+
+  <c-demo.live label="Inverted on a dark surface, held wide" anchor="invert">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.columns invert container="wide" class="bg-neutral" tagline="…" notice="© 2026 Meridian GmbH">
+  <c-slot name="logo"><c-demo.logo mark-class="" /></c-slot>
+  …
+</c-footer.columns>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.columns invert container="wide" class="bg-neutral" tagline="Releases you can roll back with one click, for teams that ship every day." notice="© 2026 Meridian GmbH">
+      <c-slot name="logo"><c-demo.logo mark-class="" /></c-slot>
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-footer.nav title="Compare">
+        <c-link hover href="#" text="Against a deploy script" />
+        <c-link hover href="#" text="Against your CI's own steps" />
+      </c-footer.nav>
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+    </c-footer.columns>
+  </c-demo.live>
+
+  <c-demo.live label="Over a background" anchor="background">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.columns tagline="…" notice="© 2026 Meridian GmbH">
+  <c-slot name="background"><c-background.grid /></c-slot>
+  …
+</c-footer.columns>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.columns tagline="Releases you can roll back with one click, for teams that ship every day." notice="© 2026 Meridian GmbH">
+      <c-slot name="background"><c-background.grid /></c-slot>
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+    </c-footer.columns>
+  </c-demo.live>
+
+  <c-demo.live label="No brand corner: the columns take the width" anchor="bare">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.columns class="bg-base-200" notice="© 2026 Meridian GmbH">
+  <c-footer.nav title="Product">…</c-footer.nav>
+  …
+</c-footer.columns>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.columns class="bg-base-200" notice="© 2026 Meridian GmbH">
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+    </c-footer.columns>
+  </c-demo.live>
+
+  <c-demo.live label="One short column, then six with long names" anchor="counts">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.columns class="bg-base-200" tagline="…">…</c-footer.columns>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.columns class="bg-base-200" tagline="A footer can hold a single column and no copyright line.">
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Pricing" />
+        <c-link hover href="#" text="Changelog" />
+      </c-footer.nav>
+    </c-footer.columns>
+    <c-footer.columns class="bg-base-200" tagline="Six columns are more than the space beside a brand corner wants. Each has little room and long names wrap. Three or four read best." notice="© 2026 Meridian Gesellschaft für Softwareauslieferung mbH, Berlin. All rights reserved.">
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Rollbacks" />
+        <c-link hover href="#" text="Environments" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+      <c-footer.nav title="Resources">
+        <c-link hover href="#" text="Documentation" />
+        <c-link hover href="#" text="Changelog" />
+        <c-link hover href="#" text="Status" />
+        <c-link hover href="#" text="Support" />
+      </c-footer.nav>
+      <c-footer.nav title="Company">
+        <c-link hover href="#" text="About" />
+        <c-link hover href="#" text="Customers" />
+        <c-link hover href="#" text="Careers" />
+      </c-footer.nav>
+      <c-footer.nav title="Compare">
+        <c-link hover href="#" text="Against a deploy script" />
+        <c-link hover href="#" text="Against your CI's own steps" />
+      </c-footer.nav>
+      <c-footer.nav title="Integrations">
+        <c-link hover href="#" text="GitHub Actions" />
+        <c-link hover href="#" text="GitLab pipelines" />
+        <c-link hover href="#" text="Kubernetes" />
+      </c-footer.nav>
+      <c-footer.nav title="Legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Data processing agreement" />
+      </c-footer.nav>
+    </c-footer.columns>
+  </c-demo.live>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{# @description The full footer: the brand in one corner, columns of links beside it, and the copyright line underneath. For a site with more pages than its navigation bar can hold. #}
+{# @prop tagline:text | description:"The sentence under the logo" #}
+{# @prop notice:text | description:"The copyright line: © 2026 Meridian GmbH" #}
+{# @prop container:select['default', 'wide'] | default:"default" | description:"How wide the content may grow. Match the sections above it." #}
+{# @prop invert:boolean | default:False | description:"Light copy, for a dark surface such as bg-neutral" #}
+{# @prop class:text | description:"Extra classes on the footer's surface. A plain surface colour goes here: bg-base-200." #}
+{# @slot <nav aria-label="Product"><span class="footer-title">Product</span><a class="link link-hover" href="#">Pricing</a><a class="link link-hover" href="#">Changelog</a></nav><nav aria-label="Company"><span class="footer-title">Company</span><a class="link link-hover" href="#">About</a><a class="link link-hover" href="#">Careers</a></nav> — The columns of links: one of daisy-cotton's footer.nav for each. Three or four read best. #}
+{# @slot:logo — The logo or wordmark, in the brand corner #}
+{# @slot:social — Social links under the tagline, as daisy-cotton buttons. An icon-only button needs an aria-label. #}
+{# @slot:legal — The small links at the end of the copyright line: privacy, terms, imprint #}
+{# @slot:background — A background block, rendered into a layer behind the footer #}
+{% comment %}
+  The outer element is the `footer`, so it is the page's contentinfo landmark:
+  a footer inside a section would only be that section's. The links sit in a
+  `div` carrying daisyUI's `footer` class, which is what stacks the links of
+  each footer.nav. Two columns of groups on a phone, one row from `sm` up.
+{% endcomment %}
+<c-vars tagline notice container="default" invert class />
+<footer {{ attrs }}>
+  <c-section flush container="{{ container }}" :invert="invert" class="dce:py-12 dce:md:py-16 {{ class }}" only>
+    {% if background %}<c-slot name="background">{{ background }}</c-slot>{% endif %}
+    <div class="dce:grid dce:gap-10 dce:lg:grid-cols-5 dce:lg:gap-16">
+      {% if logo or tagline or social %}
+        <c-footer.brand :tagline="tagline" :invert="invert" class="dce:lg:col-span-2" only>
+          {% if logo %}<c-slot name="logo">{{ logo }}</c-slot>{% endif %}{{ social }}</c-footer.brand>
+      {% endif %}
+      <div class="footer dce:grid-cols-2 dce:sm:auto-cols-fr dce:sm:grid-flow-col dce:sm:grid-cols-none {% if logo or tagline or social %}dce:lg:col-span-3{% else %}dce:lg:col-span-5{% endif %}">{{ slot }}</div>
+    </div>
+    {% if notice or legal %}
+      <c-footer.legal :notice="notice" :invert="invert" divided class="dce:mt-10 dce:md:mt-12" only>{{ legal }}</c-footer.legal>
+    {% endif %}
+  </c-section>
+</footer>

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Centred{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-footer.centred">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">
+      One row of links in place of columns, so it suits a site with six links and not twenty. The row wraps and stays centred when it runs out of room. Every part is optional: leave out the logo, the social links or the copyright line and the rest closes up.
+    </p>
+  </c-demo.head>
+
+  <c-demo.live label="Everything it holds, on a surface colour" anchor="full">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.centred class="bg-base-200" notice="© 2026 Meridian GmbH">
+  <c-slot name="logo"><c-demo.logo /></c-slot>
+  <c-link hover href="#" text="Pricing" />
+  <c-link hover href="#" text="Documentation" />
+  …
+  <c-slot name="social">
+    <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+    …
+  </c-slot>
+  <c-slot name="legal">
+    <c-link hover href="#" text="Privacy" />
+    …
+  </c-slot>
+</c-footer.centred>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.centred class="bg-base-200" notice="© 2026 Meridian GmbH">
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-link hover href="#" text="Pricing" />
+      <c-link hover href="#" text="Documentation" />
+      <c-link hover href="#" text="Changelog" />
+      <c-link hover href="#" text="Status" />
+      <c-link hover href="#" text="About" />
+      <c-link hover href="#" text="Contact" />
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+    </c-footer.centred>
+  </c-demo.live>
+
+  <c-demo.live label="With a tagline, inverted on a dark surface" anchor="invert">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.centred invert class="bg-neutral" tagline="Releases you can roll back with one click." notice="© 2026 Meridian GmbH">
+  <c-slot name="logo"><c-demo.logo mark-class="" /></c-slot>
+  …
+</c-footer.centred>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.centred invert class="bg-neutral" tagline="Releases you can roll back with one click." notice="© 2026 Meridian GmbH">
+      <c-slot name="logo"><c-demo.logo mark-class="" /></c-slot>
+      <c-link hover href="#" text="Pricing" />
+      <c-link hover href="#" text="Documentation" />
+      <c-link hover href="#" text="Changelog" />
+      <c-link hover href="#" text="Status" />
+      <c-link hover href="#" text="About" />
+      <c-link hover href="#" text="Contact" />
+      <c-slot name="social">
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-slot>
+    </c-footer.centred>
+  </c-demo.live>
+
+  <c-demo.live label="Over a background" anchor="background">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.centred notice="© 2026 Meridian GmbH">
+  <c-slot name="background"><c-background.glow /></c-slot>
+  …
+</c-footer.centred>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.centred notice="© 2026 Meridian GmbH">
+      <c-slot name="background"><c-background.glow /></c-slot>
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-link hover href="#" text="Pricing" />
+      <c-link hover href="#" text="Documentation" />
+      <c-link hover href="#" text="Changelog" />
+      <c-link hover href="#" text="Status" />
+      <c-link hover href="#" text="About" />
+      <c-link hover href="#" text="Contact" />
+    </c-footer.centred>
+  </c-demo.live>
+
+  <c-demo.live label="Links and a notice, nothing else" anchor="bare">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.centred class="bg-base-200" notice="© 2026 Meridian GmbH">
+  <c-link hover href="#" text="Pricing" />
+  <c-link hover href="#" text="Contact" />
+</c-footer.centred>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.centred class="bg-base-200" notice="© 2026 Meridian GmbH">
+      <c-link hover href="#" text="Pricing" />
+      <c-link hover href="#" text="Contact" />
+    </c-footer.centred>
+  </c-demo.live>
+
+  <c-demo.live label="More links than a row holds" anchor="many">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.centred class="bg-base-200" notice="…">…</c-footer.centred>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer.centred class="bg-base-200" notice="© 2026 Meridian Gesellschaft für Softwareauslieferung mbH, Berlin. All rights reserved.">
+      <c-slot name="logo"><c-demo.logo /></c-slot>
+      <c-link hover href="#" text="Pricing" />
+      <c-link hover href="#" text="Documentation" />
+      <c-link hover href="#" text="Changelog" />
+      <c-link hover href="#" text="Status" />
+      <c-link hover href="#" text="About" />
+      <c-link hover href="#" text="Contact" />
+      <c-link hover href="#" text="Customers" />
+      <c-link hover href="#" text="Careers" />
+      <c-link hover href="#" text="Press" />
+      <c-link hover href="#" text="Security and compliance" />
+      <c-link hover href="#" text="Data processing agreement" />
+      <c-link hover href="#" text="Support" />
+      <c-slot name="legal">
+        <c-link hover href="#" text="Privacy" />
+        <c-link hover href="#" text="Terms" />
+        <c-link hover href="#" text="Imprint" />
+      </c-slot>
+    </c-footer.centred>
+  </c-demo.live>
+{% endblock content %}

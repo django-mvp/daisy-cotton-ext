@@ -1,0 +1,22 @@
+{# @description One line: the logo and copyright notice at one end, a few links and the social links at the other. For application pages and anywhere the footer should stay out of the way. #}
+{# @prop notice:text | description:"The copyright line: © 2026 Meridian GmbH" #}
+{# @prop label:text | description:"The name assistive technology gives the row of links. Left empty, it is a translated Footer." #}
+{# @prop container:select['default', 'wide'] | default:"default" | description:"How wide the content may grow. Match the sections above it." #}
+{# @prop invert:boolean | default:False | description:"Light copy, for a dark surface such as bg-neutral" #}
+{# @prop class:text | description:"Extra classes on the footer's surface. A plain surface colour goes here: bg-base-200." #}
+{# @slot <a class="link link-hover" href="#">Privacy</a><a class="link link-hover" href="#">Terms</a><a class="link link-hover" href="#">Status</a> — The links. Four or five at most: the line has to stay a line. #}
+{# @slot:logo — The logo or wordmark, before the notice. Small: it shares the line. #}
+{# @slot:social — Social links at the far end, as daisy-cotton buttons. An icon-only button needs an aria-label. #}
+{% comment %}
+  One row from `md` up. Below it the three parts stack in the order written,
+  against the start edge, where the page's own gutter already is.
+{% endcomment %}
+{% load i18n %}
+<c-vars notice label container="default" invert class />
+<footer {{ attrs }}>
+  <c-section flush container="{{ container }}" :invert="invert" class="dce:py-6 {{ class }}" only>
+    <c-footer.legal :notice="notice" label="{% if label %}{{ label }}{% else %}{% translate 'Footer' %}{% endif %}" :invert="invert" only>
+      {% if logo %}<c-slot name="start">{{ logo }}</c-slot>{% endif %}
+      {% if social %}<c-slot name="end">{{ social }}</c-slot>{% endif %}{{ slot }}</c-footer.legal>
+  </c-section>
+</footer>

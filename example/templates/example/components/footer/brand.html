@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Brand{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-footer.brand">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">
+      The corner the columns and centred footers put the logo in. Use it on its own when you lay a footer out yourself, inside daisy-cotton's <code>c-footer</code> or anywhere else.
+    </p>
+  </c-demo.head>
+
+  <c-demo.live label="Logo, tagline and social links" anchor="full">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.brand tagline="Releases you can roll back with one click, for teams that ship every day.">
+  <c-slot name="logo"><c-demo.logo /></c-slot>
+  <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+  …
+</c-footer.brand>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-container class="py-10">
+      <c-footer.brand tagline="Releases you can roll back with one click, for teams that ship every day.">
+        <c-slot name="logo"><c-demo.logo /></c-slot>
+        <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
+        <c-button ghost size="sm" class="btn-square" icon="mastodon" href="#" aria-label="Meridian on Mastodon" />
+        <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
+        <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
+      </c-footer.brand>
+    </c-container>
+  </c-demo.live>
+
+  <c-demo.live label="Centred, with no social links" anchor="centred">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.brand align="centre" tagline="Releases you can roll back with one click.">
+  <c-slot name="logo"><c-demo.logo /></c-slot>
+</c-footer.brand>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-container class="py-10">
+      <c-footer.brand align="centre" tagline="Releases you can roll back with one click.">
+        <c-slot name="logo"><c-demo.logo /></c-slot>
+      </c-footer.brand>
+    </c-container>
+  </c-demo.live>
+
+  <c-demo.live label="Inside daisy-cotton's own footer" anchor="plain">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer horizontal class="bg-base-200 p-10">
+  <c-footer.brand tagline="Releases you can roll back with one click.">
+    <c-slot name="logo"><c-demo.logo /></c-slot>
+  </c-footer.brand>
+  <c-footer.nav title="Product">…</c-footer.nav>
+</c-footer>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-footer horizontal class="bg-base-200 p-10">
+      <c-footer.brand tagline="Releases you can roll back with one click.">
+        <c-slot name="logo"><c-demo.logo /></c-slot>
+      </c-footer.brand>
+      <c-footer.nav title="Product">
+        <c-link hover href="#" text="Deploys" />
+        <c-link hover href="#" text="Pricing" />
+      </c-footer.nav>
+    </c-footer>
+  </c-demo.live>
+{% endblock content %}

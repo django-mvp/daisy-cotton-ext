@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.5.0] - 2026-10-12
+
 ### Added
 
 - `<c-marquee>`, a row of anything that travels across the page without end. It moves by CSS

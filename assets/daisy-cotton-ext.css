@@ -98,6 +98,12 @@
   100% { translate: 70cqmax 0; scale: 1 1; opacity: 1; }
 }
 
+/* The marquee. Each of its two copies travels its own width and one gap, which
+ * is where the other began. */
+@keyframes dce-marquee {
+  to { translate: calc(-100% - var(--marquee-gap, 3rem)) 0; }
+}
+
 /* Motion for the text effects. A fill clipped to its letters cannot be moved by
  * the compositor, so the gradient, the shimmer and the marker animate a
  * background and repaint the few words they cover. The rest move by `translate`

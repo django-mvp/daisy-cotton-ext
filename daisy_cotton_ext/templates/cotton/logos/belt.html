@@ -1,0 +1,26 @@
+{# @description One line of logos moving across the page under a short heading. The usual way to show who sponsors, funds or uses a project. #}
+{# @prop eyebrow:text | description:"Short line above the logos. On its own it is the whole heading: Supported by." #}
+{# @prop title:text | description:"A full heading, for a belt that is a section in its own right" #}
+{# @prop lead:text | description:"The supporting sentence under the heading" #}
+{# @prop level:select['1', '2', '3', '4', '5', '6'] | default:"2" | description:"Heading level" #}
+{# @prop tone:select['original', 'muted', 'ink'] | default:"original" | description:"How the logos are drawn. original is each file as it is. muted is grey until the pointer reaches it. ink is each logo's shape in the text colour, which holds on every theme." #}
+{# @prop logo-size:select['sm', 'md', 'lg', 'xl'] | default:"md" | description:"How tall the logos are" #}
+{# @prop speed:number | default:"1" | description:"How quickly the belt travels, as a multiple: 2 is twice as fast, 0.5 half" #}
+{# @prop reverse:boolean | default:False | description:"Travel from left to right" #}
+{# @prop container:select['default', 'wide', 'full'] | default:"default" | description:"How wide the belt runs. full takes it to the edges of the page." #}
+{# @prop size:select['sm', 'md', 'lg'] | default:"md" | description:"How much vertical room the block takes" #}
+{# @prop controls:boolean | default:True | description:"Draw the pause control. Turn it off only when the page gives another way to stop the movement: without one, a keyboard or touch-screen visitor cannot." #}
+{# @prop pause:text | description:"The name of the pause control, for a screen reader. Left empty, it is a translated Pause the moving logos." #}
+{# @prop class:text | description:"Extra classes on the outer section. A plain surface colour goes here: bg-base-200." #}
+{# @slot <c-logos.logo src="…" name="Northwind" href="https://example.com" /><c-logos.logo src="…" name="Papaya" /> — The logos, or logo tiles, in the order they pass #}
+<c-vars eyebrow title lead level="2" tone="original" logo-size="md" speed="1" reverse container="default" size="md" controls="True" pause class />
+{% load i18n %}
+{% translate "Pause the moving logos" as pause_default %}
+<c-section flush :container="container" class="{% if size == 'sm' %}dce:py-8 dce:md:py-10{% elif size == 'lg' %}dce:py-16 dce:md:py-24{% else %}dce:py-12 dce:md:py-16{% endif %} {{ class }}" :attrs="attrs" only>
+  {% if eyebrow or title or lead %}
+    <c-heading :eyebrow="eyebrow" :title="title" :lead="lead" level="{{ level }}" class="{% if title %}dce:mb-10{% else %}dce:mb-6{% endif %} {% if container == 'full' %}dce:px-4{% endif %}" only />
+  {% endif %}
+  <div data-logo-tone="{{ tone }}" class="{% if logo_size == 'sm' %}dce:[--logo-size:1.5rem]{% elif logo_size == 'lg' %}dce:[--logo-size:3rem]{% elif logo_size == 'xl' %}dce:[--logo-size:4rem]{% else %}dce:[--logo-size:2rem]{% endif %}">
+    <c-marquee :speed="speed" :reverse="reverse" pause="{{ pause|default:pause_default }}" :controls="controls" only>{{ slot }}</c-marquee>
+  </div>
+</c-section>

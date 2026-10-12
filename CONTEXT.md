@@ -33,6 +33,16 @@ separates it from a block. A component that maps one-to-one onto a daisyUI compo
 and belongs in daisy-cotton.
 _Avoid_: advanced component, pro component, block (a block is a region of a page).
 
+**Marquee**:
+`<c-marquee>`, a row that travels across the page without end and comes round again. The word for
+what the logo blocks move on, and for nothing else. daisy-cotton's `<c-carousel>` is a different
+thing: the visitor moves that one, a slide at a time.
+_Avoid_: carousel, ticker, slider, conveyor.
+
+**Tone**:
+How a logo is drawn: `original`, `muted` or `ink`. An option of the logo blocks, set once on the
+block for every logo inside it.
+
 **Block family**:
 All the blocks that do the same job on a page, sharing a tag prefix: `hero` is a family, and
 `<c-hero.centred>`, `<c-hero.split>` and `<c-hero.with-mockup>` are blocks within it. A family is a
@@ -55,8 +65,8 @@ An option that sets an amount takes a number: speed, intensity, opacity, and a s
 control is the point, such as how far apart a grid's rules sit. An option that picks from a
 designed scale takes a name: a font size, a button size, a block's `size`. A number reaches the
 page as a custom property or a single declaration on the element's `style` attribute, put through
-`floatformat` so that nothing but a number can be written there. That is the only use of `style`:
-anything longer is a class. The reasoning is in
+`floatformat` so that nothing but a number can be written there. That is the only use of `style`
+but one: a logo writes its image's address there, for the `ink` tone. Anything longer is a class. The reasoning is in
 `docs/adr/0003-amounts-are-numbers-written-to-style.md`.
 _Avoid_: variant (see below), prop, parameter, setting.
 

@@ -34,6 +34,10 @@ SUMMARIES: dict[str, dict[str, str]] = {
         "block": "Five frames for a sign-in form. The form stays your application's."
     },
     "sign-up": {"block": "Four sign-up pages that put the pitch beside the form."},
+    "logos": {
+        "component": "A logo held to its neighbours' height, or on a card with its name.",
+        "block": "Sponsors and partners on a moving belt: one line, several, by level, or beside the request.",
+    },
     "footer": {
         "component": "The brand corner and the copyright line the footers are made of.",
         "block": "The end of a page: columns of links, one centred stack, a single line, or a last request.",

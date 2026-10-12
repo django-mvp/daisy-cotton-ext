@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Tier{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.tier">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">Only used inside <code>&lt;c-logos.tiers&gt;</code>, which draws the rules between levels and the pause control for all of them.</p>
+  </c-demo.head>
+
+  <c-demo.live label="Inside its block" anchor="tier">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.tiers>
+  <c-logos.tier label="Founding partners" note="With the project since its first release" logo-size="lg">… logos …</c-logos.tier>
+</c-logos.tiers>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.tiers>
+      <c-logos.tier label="Founding partners" note="With the project since its first release" logo-size="lg"><c-demo.logos set="first" /><c-demo.logos set="third" /></c-logos.tier>
+    </c-logos.tiers>
+  </c-demo.live>
+{% endblock content %}

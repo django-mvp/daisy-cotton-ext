@@ -68,6 +68,7 @@ HOST_PROVIDED_CLASSES = frozenset(
         "badge-success",
         "btn",
         "btn-accent",
+        "btn-circle",
         "btn-ghost",
         "btn-lg",
         "btn-link",

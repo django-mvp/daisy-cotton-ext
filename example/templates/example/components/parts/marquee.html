@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Marquee{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-marquee">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">What the logo blocks are built on, and it carries anything. It moves by CSS alone. It stops under the pointer, while anything inside it has focus, and when its pause control is pressed. Under reduced motion the items hold still, wrapped and centred, and the control is not drawn.</p>
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">Speed is how often the row comes round, so a row holding more travels faster across the screen at the same number. Turn it down as the row grows.</p>
+  </c-demo.head>
+
+  <c-container class="pb-10">
+    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee gap="sm"><span class="badge badge-soft badge-lg">Django 6.1</span>…</c-marquee>{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="p-8">
+          <c-marquee gap="sm" pause="Pause the moving list of versions">
+            <span class="badge badge-soft badge-lg">Django 5.2</span>
+            <span class="badge badge-soft badge-lg">Django 6.0</span>
+            <span class="badge badge-soft badge-lg">Django 6.1</span>
+            <span class="badge badge-soft badge-lg">Python 3.12</span>
+            <span class="badge badge-soft badge-lg">Python 3.13</span>
+            <span class="badge badge-soft badge-lg">daisyUI 5</span>
+            <span class="badge badge-soft badge-lg">Tailwind 4</span>
+            <span class="badge badge-soft badge-lg">Cotton 2.6</span>
+          </c-marquee>
+        </div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee reverse speed="2" gap="lg">…</c-marquee>{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="p-8"><c-marquee reverse speed="2" gap="lg" pause="Pause the moving logos"><c-demo.logos set="first" /><c-demo.logos set="third" /></c-marquee></div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee :fade="False" speed="0.5">…</c-marquee>{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="p-8"><c-marquee :fade="False" speed="0.5" pause="Pause the moving logos"><c-demo.logos set="second" /><c-demo.logos set="first" /></c-marquee></div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee>… two items …</c-marquee>{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="p-8">
+          <c-marquee pause="Pause the moving logos">
+            <c-logos.logo src="{% static 'example/logos/papaya.svg' %}" name="Papaya" />
+            <c-logos.logo src="{% static 'example/logos/fjordline.svg' %}" name="Fjordline" />
+          </c-marquee>
+        </div>
+      </c-demo.tile>
+    </div>
+  </c-container>
+
+  <c-demo.live label="Carrying quotations" anchor="quotes">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee speed="0.5" gap="sm" class="py-12">
+  <c-quote.card class="max-w-xs shrink-0" name="Amara Okafor" role="Northwind" src="…">“…”</c-quote.card>
+  …
+</c-marquee>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-marquee speed="0.5" gap="sm" pause="Pause the moving quotations" class="py-12">
+      <c-quote.card class="max-w-xs shrink-0" name="Amara Okafor" role="Northwind" src="{% static 'example/people/amara.svg' %}">“Friday afternoon stopped being frightening.”</c-quote.card>
+      <c-quote.card class="max-w-xs shrink-0" name="Mei Tanaka" role="Harbour Bank" src="{% static 'example/people/mei.svg' %}">“The audit log answered the question before the auditor had finished asking it.”</c-quote.card>
+      <c-quote.card class="max-w-xs shrink-0" name="Inês Carvalho" role="Papaya" src="{% static 'example/people/ines.svg' %}">“Our designers review the real thing now, not a screenshot of it.”</c-quote.card>
+      <c-quote.card class="max-w-xs shrink-0" name="Jonas Lindqvist" role="Fjordline" src="{% static 'example/people/jonas.svg' %}">“Rolling back used to be a meeting. Now it is a button.”</c-quote.card>
+    </c-marquee>
+  </c-demo.live>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{# @description One level of sponsors inside logos.tiers: its name on the left and its logos passing on the right. #}
+{# @prop label:text | description:"The level's name: Gold, Founding partners" #}
+{# @prop note:text | description:"A quiet line under the name: what the level gives, or what it costs" #}
+{# @prop logo-size:select['sm', 'md', 'lg', 'xl'] | default:"md" | description:"How tall this level's logos are. Step down a size with each level." #}
+{# @prop speed:number | default:"1" | description:"How quickly this level travels, as a multiple" #}
+{# @prop class:text | description:"Extra classes on the row" #}
+{# @slot <c-logos.logo src="…" name="Northwind" /><c-logos.logo src="…" name="Papaya" /> — This level's logos #}
+{% comment %}
+  Below the lg breakpoint the name goes above the logos.
+{% endcomment %}
+<c-vars label note logo-size="md" speed="1" class />
+<div class="dce:flex dce:flex-col dce:gap-4 dce:py-8 dce:lg:flex-row dce:lg:items-center dce:lg:gap-8
+            {% if logo_size == 'sm' %}dce:[--logo-size:1.5rem]{% elif logo_size == 'lg' %}dce:[--logo-size:3rem]{% elif logo_size == 'xl' %}dce:[--logo-size:4rem]{% else %}dce:[--logo-size:2rem]{% endif %}
+            {{ class }}"
+     {{ attrs }}>
+  <div class="dce:shrink-0 dce:text-center dce:lg:w-40 dce:lg:text-start">
+    <p class="dce:text-sm dce:font-semibold dce:tracking-widest dce:uppercase">{{ label }}</p>
+    {% if note %}<p class="dce:mt-1 dce:text-sm dce:text-base-content/80">{{ note }}</p>{% endif %}
+  </div>
+  <c-marquee :speed="speed" class="dce:min-w-0 dce:lg:flex-1" only>{{ slot }}</c-marquee>
+</div>

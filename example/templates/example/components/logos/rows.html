@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Rows{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.rows">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">Each row is a <code>&lt;c-marquee&gt;</code> of its own, so each takes its own speed. Every second row runs the other way without being told to. One pause control under the last row stops them all.</p>
+  </c-demo.head>
+
+  <c-demo.live label="Three rows at slightly different speeds" anchor="three">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.rows eyebrow="Participating organisations"
+              title="Forty institutions, one data standard"
+              lead="Each of them publishes to the shared catalogue.">
+  <c-marquee>… logos …</c-marquee>
+  <c-marquee speed="0.8">… logos …</c-marquee>
+  <c-marquee speed="1.2">… logos …</c-marquee>
+</c-logos.rows>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.rows eyebrow="Participating organisations"
+                  title="Forty institutions, one data standard"
+                  lead="Each of them publishes to the shared catalogue.">
+      <c-marquee><c-demo.logos set="first" href="#three" /><c-demo.logos set="second" href="#three" /></c-marquee>
+      <c-marquee speed="0.8"><c-demo.logos set="third" href="#three" /><c-demo.logos set="first" href="#three" /></c-marquee>
+      <c-marquee speed="1.2"><c-demo.logos set="second" href="#three" /><c-demo.logos set="third" href="#three" /></c-marquee>
+    </c-logos.rows>
+  </c-demo.live>
+
+  <c-demo.live label="Two rows in ink, edge to edge, no header" anchor="ink">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.rows tone="ink" container="full" logo-size="lg" class="bg-base-200">
+  <c-marquee speed="0.6">… logos …</c-marquee>
+  <c-marquee speed="0.6">… logos …</c-marquee>
+</c-logos.rows>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.rows tone="ink" container="full" logo-size="lg" class="bg-base-200">
+      <c-marquee speed="0.6"><c-demo.logos set="first" /><c-demo.logos set="third" /></c-marquee>
+      <c-marquee speed="0.6"><c-demo.logos set="second" /><c-demo.logos set="first" /></c-marquee>
+    </c-logos.rows>
+  </c-demo.live>
+
+  <c-demo.live label="A row of tiles over a row of logos" anchor="mixed">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.rows title="Sponsors and partners" tone="muted">
+  <c-marquee speed="0.7">… logo tiles …</c-marquee>
+  <c-marquee>… logos …</c-marquee>
+</c-logos.rows>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.rows title="Sponsors and partners" tone="muted">
+      <c-marquee speed="0.7"><c-demo.tiles /></c-marquee>
+      <c-marquee><c-demo.logos /></c-marquee>
+    </c-logos.rows>
+  </c-demo.live>
+{% endblock content %}

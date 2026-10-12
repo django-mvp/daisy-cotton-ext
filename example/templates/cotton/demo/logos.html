@@ -1,0 +1,27 @@
+{% load static %}
+{# @description The logos of the made-up organisations these demos are written for, four to a set. #}
+{# @prop set:select['all', 'first', 'second', 'third', 'three', 'one'] | default:"all" | description:"Which of the logos to render" #}
+{# @prop href:text | description:"Where every logo leads. Left out, none is a link." #}
+<c-vars set="all" href />
+{% if set == 'all' or set == 'first' or set == 'three' or set == 'one' %}
+  <c-logos.logo src="{% static 'example/logos/northwind.svg' %}" name="Northwind" href="{{ href }}" />
+{% endif %}
+{% if set == 'all' or set == 'first' or set == 'three' %}
+  <c-logos.logo src="{% static 'example/logos/alder-and-pine.svg' %}" name="Alder &amp; Pine" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/harbour-bank.svg' %}" name="Harbour Bank" href="{{ href }}" />
+{% endif %}
+{% if set == 'all' or set == 'first' %}
+  <c-logos.logo src="{% static 'example/logos/papaya.svg' %}" name="Papaya" href="{{ href }}" />
+{% endif %}
+{% if set == 'all' or set == 'second' %}
+  <c-logos.logo src="{% static 'example/logos/fjordline.svg' %}" name="Fjordline" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/kestrel-labs.svg' %}" name="Kestrel Labs" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/open-tide.svg' %}" name="Open Tide Foundation" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/larkspur.svg' %}" name="Larkspur University" href="{{ href }}" />
+{% endif %}
+{% if set == 'all' or set == 'third' %}
+  <c-logos.logo src="{% static 'example/logos/quillon.svg' %}" name="Quillon" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/basalt.svg' %}" name="Basalt" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/saffron-institute.svg' %}" name="Saffron Institute" href="{{ href }}" />
+  <c-logos.logo src="{% static 'example/logos/mistral.svg' %}" name="Mistral Research Cooperative" href="{{ href }}" />
+{% endif %}

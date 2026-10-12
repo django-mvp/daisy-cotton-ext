@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Logo{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.logo">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">A logo usually takes its tone and size from the block it is in. Set them on the logo itself for one that stands alone, or one that should differ from its neighbours. Try each row on a dark theme.</p>
+  </c-demo.head>
+
+  <c-container class="pb-10">
+    <div class="mt-6 grid grid-cols-1 gap-6">
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.logo src="…" name="Northwind" tone="original" />{% endverbatim %}{% endfilter %}</c-slot>
+        <div data-logo-tone="original" class="flex flex-wrap items-center justify-center gap-10 p-10"><c-demo.logos set="first" /><c-demo.logos set="second" /></div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.logo src="…" name="Northwind" tone="muted" />{% endverbatim %}{% endfilter %}</c-slot>
+        <div data-logo-tone="muted" class="flex flex-wrap items-center justify-center gap-10 p-10"><c-demo.logos set="first" /><c-demo.logos set="second" /></div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.logo src="…" name="Northwind" tone="ink" />{% endverbatim %}{% endfilter %}</c-slot>
+        <div data-logo-tone="ink" class="flex flex-wrap items-center justify-center gap-10 p-10"><c-demo.logos set="first" /><c-demo.logos set="second" /></div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.logo src="…" name="Larkspur University" size="sm" /> … size="md" … size="lg" … size="xl"{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="flex flex-wrap items-center justify-center gap-10 p-10">
+          <c-logos.logo src="{% static 'example/logos/larkspur.svg' %}" name="Larkspur University" size="sm" />
+          <c-logos.logo src="{% static 'example/logos/mistral.svg' %}" name="Mistral Research Cooperative" size="sm" />
+          <c-logos.logo src="{% static 'example/logos/larkspur.svg' %}" name="Larkspur University" size="md" />
+          <c-logos.logo src="{% static 'example/logos/papaya.svg' %}" name="Papaya" size="md" />
+          <c-logos.logo src="{% static 'example/logos/larkspur.svg' %}" name="Larkspur University" size="lg" />
+          <c-logos.logo src="{% static 'example/logos/papaya.svg' %}" name="Papaya" size="lg" />
+          <c-logos.logo src="{% static 'example/logos/larkspur.svg' %}" name="Larkspur University" size="xl" />
+        </div>
+      </c-demo.tile>
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.logo src="/a-file-that-is-not-there.svg" name="Harbour Bank" />{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="flex flex-wrap items-center justify-center gap-10 p-10">
+          <c-logos.logo src="/a-file-that-is-not-there.svg" name="Harbour Bank" />
+        </div>
+      </c-demo.tile>
+    </div>
+  </c-container>
+{% endblock content %}

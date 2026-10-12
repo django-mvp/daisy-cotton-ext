@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Belt{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.belt">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">The logos are written once and pass without a seam. The belt stops under the pointer, while a logo has keyboard focus, and when the pause control at its end is pressed. Anyone who has asked their system to reduce motion gets the same logos, holding still and wrapped onto as many lines as they need.</p>
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">Switch the theme to a dark one before settling on a tone. A black wordmark drawn as it is disappears there, and <code>ink</code> is the tone that does not.</p>
+  </c-demo.head>
+
+  <c-demo.live label="A short line above, logos as they are" anchor="default">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Supported by">
+  <c-logos.logo src="{% static 'logos/northwind.svg' %}" name="Northwind" href="https://example.com" />
+  <c-logos.logo src="{% static 'logos/papaya.svg' %}" name="Papaya" href="https://example.com" />
+  …
+</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Supported by"><c-demo.logos href="#default" /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="Without the pause control" anchor="no-control">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Supported by" :controls="False">…</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Supported by" :controls="False"><c-demo.logos href="#no-control" /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="Muted, edge to edge, on a tinted surface" anchor="muted">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Used in production at" tone="muted" container="full" size="sm" class="bg-base-200">…</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Used in production at" tone="muted" container="full" size="sm" class="bg-base-200"><c-demo.logos href="#muted" /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="Ink, under a full heading, with larger logos" anchor="ink">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt title="Built with forty organisations"
+              lead="Universities, foundations and companies who give the project their time."
+              tone="ink" logo-size="lg" speed="0.7">…</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt title="Built with forty organisations"
+                  lead="Universities, foundations and companies who give the project their time."
+                  tone="ink"
+                  logo-size="lg"
+                  speed="0.7"><c-demo.logos /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="Tiles, travelling the other way" anchor="tiles">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Our sponsors" container="wide" reverse speed="0.8">
+  <c-logos.tile src="…" name="Northwind" note="Founding sponsor" href="https://example.com" />
+  <c-logos.tile src="…" name="Larkspur University" note="Hosts the project's servers" href="https://example.com" />
+  …
+</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Our sponsors" container="wide" reverse speed="0.8" class="bg-base-200"><c-demo.tiles /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="Three logos" anchor="three">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Funded by">… three logos …</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Funded by"><c-demo.logos set="three" /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="One logo" anchor="one">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Our first sponsor">… one logo …</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Our first sponsor"><c-demo.logos set="one" /></c-logos.belt>
+  </c-demo.live>
+
+  <c-demo.live label="Thirty-six logos, small, at twice the speed" anchor="many">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Everyone who has contributed" logo-size="sm" speed="2" tone="muted">… thirty-six logos …</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Everyone who has contributed" logo-size="sm" speed="2" tone="muted"><c-demo.logos /><c-demo.logos /><c-demo.logos /></c-logos.belt>
+  </c-demo.live>
+{% endblock content %}

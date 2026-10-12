@@ -1,0 +1,31 @@
+{# @description Several lines of logos, each travelling the other way from the one above. For when there are too many organisations for one line, or to give the section some weight. #}
+{# @prop eyebrow:text | description:"Short line above the heading" #}
+{# @prop title:text | description:"The heading. Left empty with no eyebrow, the block has no header." #}
+{# @prop lead:text | description:"The supporting sentence under the heading" #}
+{# @prop level:select['1', '2', '3', '4', '5', '6'] | default:"2" | description:"Heading level" #}
+{# @prop tone:select['original', 'muted', 'ink'] | default:"original" | description:"How the logos are drawn. original is each file as it is. muted is grey until the pointer reaches it. ink is each logo's shape in the text colour, which holds on every theme." #}
+{# @prop logo-size:select['sm', 'md', 'lg', 'xl'] | default:"md" | description:"How tall the logos are" #}
+{# @prop container:select['default', 'wide', 'full'] | default:"wide" | description:"How wide the rows run. full takes them to the edges of the page." #}
+{# @prop size:select['sm', 'md', 'lg'] | default:"md" | description:"How much vertical room the block takes" #}
+{# @prop controls:boolean | default:True | description:"Draw the pause control. Turn it off only when the page gives another way to stop the movement: without one, a keyboard or touch-screen visitor cannot." #}
+{# @prop pause:text | description:"The name of the pause control, for a screen reader. Left empty, it is a translated Pause the moving logos." #}
+{# @prop class:text | description:"Extra classes on the outer section. A plain surface colour goes here: bg-base-200." #}
+{# @slot <c-marquee><c-logos.logo src="…" name="Northwind" /></c-marquee><c-marquee speed="0.8"><c-logos.logo src="…" name="Papaya" /></c-marquee> — One marquee for each row. Every second one runs the other way without being told to. Give them slightly different speeds and the rows stop looking like one sheet. #}
+{% comment %}
+  One pause control for every row, under the last. Each row still stops alone
+  under the pointer.
+{% endcomment %}
+<c-vars eyebrow title lead level="2" tone="original" logo-size="md" container="wide" size="md" controls="True" pause class />
+{% load i18n %}
+{% translate "Pause the moving logos" as pause_default %}
+<c-section flush :container="container" class="{% if size == 'sm' %}dce:py-8 dce:md:py-10{% elif size == 'lg' %}dce:py-16 dce:md:py-24{% else %}dce:py-12 dce:md:py-16{% endif %} {{ class }}" :attrs="attrs" only>
+  {% if eyebrow or title or lead %}
+    <c-heading :eyebrow="eyebrow" :title="title" :lead="lead" level="{{ level }}" class="dce:mb-10 {% if container == 'full' %}dce:px-4{% endif %}" only />
+  {% endif %}
+  <div data-marquee-group data-logo-tone="{{ tone }}" class="{% if logo_size == 'sm' %}dce:[--logo-size:1.5rem]{% elif logo_size == 'lg' %}dce:[--logo-size:3rem]{% elif logo_size == 'xl' %}dce:[--logo-size:4rem]{% else %}dce:[--logo-size:2rem]{% endif %}">
+    <div class="dce:flex dce:flex-col dce:gap-8 dce:*:even:[--marquee-direction:reverse]">{{ slot }}</div>
+    <div class="dce:mt-6 dce:flex dce:justify-center">
+      {% if controls %}<c-marquee.pause label="{{ pause|default:pause_default }}" only />{% endif %}
+    </div>
+  </div>
+</c-section>

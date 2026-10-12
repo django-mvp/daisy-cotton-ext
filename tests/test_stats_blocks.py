@@ -6,8 +6,10 @@ is the contract. Where a part sits within a layout is design and is not tested.
 """
 
 import re
+from pathlib import Path
 
 import pytest
+from django.contrib.staticfiles import finders
 
 TRENDS = [
     "c-stats.trend",
@@ -322,6 +324,53 @@ class TestCount:
         moving = re.findall(r"[\w:\[\]()-]*(?:animate-|transition:)[^\s\"]*", html)
         assert moving
         assert all(name.startswith("dce:motion-safe:") for name in moving)
+
+
+class TestCountInABrowser:
+    """Measured in a browser, because the stylesheet is what does the counting."""
+
+    COUNT_TIME = 0.1
+
+    @pytest.fixture
+    def page(self, browser, render):
+        stylesheet = finders.find("css/daisy-cotton-ext.css")
+        assert stylesheet is not None
+        page = browser.new_page(viewport={"width": 1280, "height": 800})
+        page.set_content(
+            "<!doctype html><html><head>"
+            f"<style>{Path(stylesheet).read_text(encoding='utf-8')}</style>"
+            '</head><body><div style="height: 2000px"></div>'
+            + render(f'<c-stats.count to="31" time="{self.COUNT_TIME}" />')
+            + '<div style="height: 2000px"></div></body></html>'
+        )
+        yield page
+        page.close()
+
+    def scroll_until(self, page, top: int, seen: int) -> None:
+        page.evaluate(f"window.scrollTo(0, {top})")
+        page.wait_for_function(
+            "seen => getComputedStyle(document.querySelector('[aria-hidden]')"
+            ".parentElement).getPropertyValue('--dce-seen').trim() === seen",
+            arg=str(seen),
+        )
+
+    def shown(self, page) -> str:
+        return page.evaluate(
+            "getComputedStyle(document.querySelector('[aria-hidden]'))"
+            ".getPropertyValue('--dce-count')"
+        )
+
+    def wait_for_a_count_to_run(self, page) -> None:
+        page.wait_for_timeout(self.COUNT_TIME * 1000 * 3)
+
+    def test_a_figure_that_has_counted_keeps_its_number_out_of_view(self, page) -> None:
+        self.scroll_until(page, top=1700, seen=1)
+        self.wait_for_a_count_to_run(page)
+
+        self.scroll_until(page, top=0, seen=0)
+        self.wait_for_a_count_to_run(page)
+
+        assert self.shown(page) == "31"
 
 
 class TestSections:

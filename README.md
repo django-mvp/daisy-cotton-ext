@@ -464,7 +464,8 @@ Things to know before using one:
 - **No stat draws a chart.** Trend, inline, corner and footer place whatever you put between their tags under the figures, which is where a chart from a charting package goes.
 - **You format the figures and work out the percentage.** `value` arrives as words. `percent` is a number from 0 to 100.
 - **`<c-stats.count>` counts whole numbers, written without separators.** For a large figure, count the leading part and put the rest in `suffix`: `to="12" suffix="k"`. A screen reader is given the finished number. Under `prefers-reduced-motion`, and in a browser without scroll-driven animation, so is everyone else.
-- **Inside a `<c-stat.group>`, a count runs once as the page loads.** A stat group is a scrolling box of its own, and "in view" is measured against the nearest one. Put counting stats in `<c-stats.band>` or a plain grid for a count that waits.
+- **A count runs once.** The figure counts up the first time it comes into view and keeps its number for the rest of the visit, however the page is scrolled afterwards.
+- **Inside a `<c-stat.group>`, a count runs as the page loads.** A stat group is a scrolling box of its own, and "in view" is measured against the nearest one. Put counting stats in `<c-stats.band>` or a plain grid for a count that waits.
 - **Nothing else here moves unless asked.** `cascade` on a band and `speed` on a headline are both off by default.
 - **The band takes a `background` slot,** like the heroes, and `invert` for a dark one.
 

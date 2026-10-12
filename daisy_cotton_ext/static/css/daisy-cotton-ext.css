@@ -2241,8 +2241,8 @@
       .dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\[counter-reset\:dce-count_var\(--dce-count\)\] {
         counter-reset: dce-count var(--dce-count);
       }
-      .dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\[transition\:--dce-count_calc\(var\(--count-time\,2\)\*1s\)_ease-out\] {
-        transition: --dce-count calc(var(--count-time,2) * 1s) ease-out;
+      .dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\[transition\:--dce-count_0s_ease-out_calc\(infinity\*1s\)\] {
+        transition: --dce-count 0s ease-out calc(infinity * 1s);
       }
       :is(.dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\*\:animate-\[dce-reveal-blur_1ms_linear_both\] > *) {
         animation: dce-reveal-blur 1ms linear both;
@@ -3103,6 +3103,12 @@
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline:view()) {
       @container style(--dce-seen:1) {
+        .dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\[\@container_style\(--dce-seen\:1\)\]\:\[transition-delay\:0s\] {
+          transition-delay: 0s;
+        }
+        .dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\[\@container_style\(--dce-seen\:1\)\]\:\[transition-duration\:calc\(var\(--count-time\,2\)\*1s\)\] {
+          transition-duration: calc(var(--count-time,2) * 1s);
+        }
         .dce\:motion-safe\:supports-\[animation-timeline\:view\(\)\]\:\[\@container_style\(--dce-seen\:1\)\]\:\[--dce-count\:var\(--count-to\)\] {
           --dce-count: var(--count-to);
         }

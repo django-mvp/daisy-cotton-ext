@@ -1,4 +1,4 @@
-{# @description A figure that counts up from nothing as it scrolls into view. The finished number is simply there where the browser cannot do it. Put it in a plain grid or a stats band: inside a daisyUI stats row it counts once, as the page loads. #}
+{# @description A figure that counts up from nothing the first time it scrolls into view, and keeps its number after that. The finished number is simply there where the browser cannot do it. Put it in a plain grid or a stats band: inside a daisyUI stats row it counts once, as the page loads. #}
 {# @prop title:text | description:"What the figure counts" #}
 {# @prop to:number | default:"0" | description:"The whole number it counts up to. It is written without separators, so for a large figure count the leading part and put the rest in suffix: to 12 with a suffix of k." #}
 {# @prop prefix:text | description:"Written before the number: a currency sign" #}
@@ -11,8 +11,10 @@
 {% comment %}
   Built on daisy-cotton's stat. The scroll position only starts the count: it
   runs on the clock from there, so the number never rests on a figure that is
-  not true. "In view" is measured against the nearest scrolling box, and a
-  daisyUI stats row is one. A screen reader is given the finished number.
+  not true. It runs once. Out of view, the way back to nought waits for ever,
+  so the figure keeps its number. "In view" is measured against the nearest
+  scrolling box, and a daisyUI stats row is one. A screen reader is given the
+  finished number.
 {% endcomment %}
 <c-vars title to="0" prefix suffix time="2" desc icon class />
 <c-stat class="{{ class }}" :attrs="attrs" only>
@@ -23,9 +25,11 @@
                dce:motion-safe:supports-[animation-timeline:view()]:[animation-timeline:view()]
                dce:motion-safe:supports-[animation-timeline:view()]:[animation-range:entry_0%_cover_20%]">{{ prefix }}<span class="dce:motion-safe:supports-[animation-timeline:view()]:sr-only">{{ to|floatformat:'0u'|default:'0' }}</span><span aria-hidden="true"
           class="dce:motion-safe:supports-[animation-timeline:view()]:[counter-reset:dce-count_var(--dce-count)]
-                 dce:motion-safe:supports-[animation-timeline:view()]:[transition:--dce-count_calc(var(--count-time,2)*1s)_ease-out]
+                 dce:motion-safe:supports-[animation-timeline:view()]:[transition:--dce-count_0s_ease-out_calc(infinity*1s)]
                  dce:motion-safe:supports-[animation-timeline:view()]:after:content-[counter(dce-count)]
-                 dce:motion-safe:supports-[animation-timeline:view()]:[@container_style(--dce-seen:1)]:[--dce-count:var(--count-to)]"
+                 dce:motion-safe:supports-[animation-timeline:view()]:[@container_style(--dce-seen:1)]:[--dce-count:var(--count-to)]
+                 dce:motion-safe:supports-[animation-timeline:view()]:[@container_style(--dce-seen:1)]:[transition-duration:calc(var(--count-time,2)*1s)]
+                 dce:motion-safe:supports-[animation-timeline:view()]:[@container_style(--dce-seen:1)]:[transition-delay:0s]"
           style="--count-to: {{ to|floatformat:'0u'|default:'0' }}; --count-time: {{ time|floatformat:'-3u'|default:'2' }}"></span>{{ suffix }}</span></c-slot>
   {% if desc %}<c-slot name="desc"><span class="dce:whitespace-normal">{{ desc }}</span></c-slot>{% endif %}
 </c-stat>

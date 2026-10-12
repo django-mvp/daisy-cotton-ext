@@ -75,6 +75,9 @@ Where Django already owns the grouping, use it rather than inventing a class.
 This does not license abstraction. Article III still holds: one class grouping today's behaviour is
 the goal, not a hierarchy built for a second implementation that does not exist.
 
+**Django standards.** Where code lives in a Django codebase, and when a new abstraction is worth
+adding, is set out in [`docs/contributing/standards/django.md`](docs/contributing/standards/django.md).
+
 ## Articles not adopted
 
 - Data-model conventions (Django) — nothing here for it to govern.
@@ -265,4 +268,4 @@ first. Do not cite it as an enforced standard until it runs in CI.
 
 ---
 
-**Version**: 3.1.0 | **Ratified**: 2026-09-17 | **Last Amended**: 2026-10-07
+**Version**: 3.2.0 | **Ratified**: 2026-09-17 | **Last Amended**: 2026-10-12

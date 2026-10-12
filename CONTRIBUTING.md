@@ -35,7 +35,8 @@ Every utility in a template is written with the `dce:` prefix, `dce:flex` and `d
 
 ## Rules
 
-Every change is held to [`CONSTITUTION.md`](CONSTITUTION.md) and the two pages it points at:
+Every change is held to [`CONSTITUTION.md`](CONSTITUTION.md) and the three pages it points at:
 
 - [Testing standards](docs/contributing/standards/testing.md): what gets a test, the test-first cycle, test structure and the coverage floors.
 - [Code documentation standards](docs/contributing/standards/code-documentation.md): docstrings, component annotations and comments.
+- [Django standards](docs/contributing/standards/django.md): where code lives, models, queries, forms, views, templates and when a new abstraction is worth adding.

@@ -10,7 +10,14 @@ picks from a designed scale keeps its names: a font size, a button size, a block
 
 The number reaches the page on the element's `style` attribute, either as a custom property the
 stylesheet reads (`--grid-size: 3.5rem`) or as one plain declaration (`opacity: 0.2`). Nothing else
-is written to `style`. Anything longer is a class.
+is written to `style`, with the one exception below. Anything longer is a class.
+
+**The exception is a logo's image address.** `<c-logos.logo>` writes `--logo-src: url("…")` so that
+the `ink` tone can paint the text colour through the image as a mask. A mask has to be named in
+CSS, and no class can carry an address the template author supplies. The address goes through
+`iriencode` inside a double-quoted `url()`. The filter percent-encodes a double quote, a backslash
+and a line break, so the address cannot end its own string. Two fixed values are written beside
+it, `--logo-ink` and `--logo-seen`, which switch the paint on and the image off.
 
 Every value goes through `floatformat:'-3u'|default:'<default>'` on its way in. The filter emits a
 number or nothing, and `default` fills the gap, so a value that is not a number renders the
@@ -39,6 +46,9 @@ comma into CSS.
   Each component therefore states its default twice: in `<c-vars>` and as the fallback of the
   `var()` or the declaration it replaces. Such a page gets working backgrounds at their defaults.
 - A name from the earlier releases is no longer recognised. `intensity="bold"` renders the default.
+- The same page shows an `ink` logo as the file itself. The paint, the mask and the hiding of the
+  image all hang on values in the attribute, so they are lost together and never in part.
+  `tests/test_logos_blocks.py` holds the address inside its quotes.
 - `inf` and `nan` pass the filter as those words. A browser discards the declaration, which leaves
   the default, and neither can carry a second declaration.
 - `tests/test_background_blocks.py` holds every number option to this: the number arrives, a

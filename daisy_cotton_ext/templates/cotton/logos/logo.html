@@ -1,0 +1,42 @@
+{# @description One organisation's logo, held to a common height beside its neighbours, and a link when it is given somewhere to go. #}
+{# @prop src:text | description:"Address of the logo image. An SVG or a PNG with a clear background sits best." #}
+{# @prop name:text | description:"The organisation's name. It is the image's text, and what a screen reader says." #}
+{# @prop href:text | description:"Where the logo leads. Left out, the logo is not a link." #}
+{# @prop tone:select['', 'original', 'muted', 'ink'] | description:"How the logo is drawn. original is the file as it is. muted is grey and quiet until the pointer reaches it. ink is the logo's shape in the colour of the text around it, which is the one that holds on every theme. Left out, the logo takes the tone of the block it is in." #}
+{# @prop size:select['', 'sm', 'md', 'lg', 'xl'] | description:"How tall the logo is. Left out, it takes the size of the block it is in." #}
+{# @prop class:text | description:"Extra classes on the logo's outer element" #}
+{% comment %}
+  Height is fixed and width follows the file, so a wide wordmark and a square
+  crest carry about the same weight in a row.
+
+  Tone and size are read from the nearest element that sets them, which is how
+  a block sets them once for every logo inside it. `ink` paints the text colour
+  through the image used as a mask. The image itself stays in the page, unseen,
+  to give the shape its size and the logo its name.
+
+  The mask needs the image's address in the stylesheet's reach, so it is
+  written to `style` beside the two values that switch the paint on and the
+  image off. A page whose content security policy drops inline styles loses
+  all three together and shows the logo as it is
+  (docs/adr/0003-amounts-are-numbers-written-to-style.md).
+{% endcomment %}
+<c-vars src name href tone size class />
+{# djlint:off #}
+<{% if href %}a href="{{ href }}"{% else %}span{% endif %}
+  class="dce:inline-flex dce:shrink-0 dce:items-center
+         {% if size == 'sm' %}dce:[--logo-size:1.5rem]{% elif size == 'md' %}dce:[--logo-size:2rem]{% elif size == 'lg' %}dce:[--logo-size:3rem]{% elif size == 'xl' %}dce:[--logo-size:4rem]{% endif %}
+         {{ class }}"
+  {% if tone %}data-logo-tone="{{ tone }}"{% endif %}
+  {{ attrs }}>
+  <span class="dce:block dce:transition-all dce:duration-300
+               dce:in-data-[logo-tone=muted]:opacity-60 dce:in-data-[logo-tone=muted]:grayscale
+               dce:in-data-[logo-tone=muted]:hover:opacity-100 dce:in-data-[logo-tone=muted]:hover:grayscale-0
+               dce:in-data-[logo-tone=ink]:bg-(--logo-ink,transparent) dce:in-data-[logo-tone=ink]:opacity-70 dce:in-data-[logo-tone=ink]:hover:opacity-100
+               dce:in-data-[logo-tone=ink]:[mask:var(--logo-src)_center/contain_no-repeat]"
+        style='--logo-src: url("{{ src|iriencode }}"); --logo-ink: currentColor; --logo-seen: 0'>
+    <img src="{{ src }}"
+         alt="{{ name }}"
+         class="dce:block dce:h-(--logo-size,2rem) dce:w-auto dce:max-w-(--logo-max,none) dce:object-contain dce:in-data-[logo-tone=ink]:opacity-(--logo-seen,1)" />
+  </span>
+</{% if href %}a{% else %}span{% endif %}>
+{# djlint:on #}

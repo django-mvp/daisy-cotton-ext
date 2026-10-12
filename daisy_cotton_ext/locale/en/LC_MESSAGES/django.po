@@ -52,3 +52,17 @@ msgstr ""
 #: templates/cotton/footer/legal.html:30
 msgid "Legal"
 msgstr ""
+
+#: templates/cotton/marquee/pause.html:21
+msgid "Pause the movement"
+msgstr ""
+
+#: templates/cotton/logos/belt.html:19 templates/cotton/logos/inline.html:17
+#: templates/cotton/logos/rows.html:21 templates/cotton/logos/split.html:17
+#: templates/cotton/logos/tiers.html:16
+msgid "Pause the moving logos"
+msgstr ""
+
+#: templates/cotton/logos/inline.html:22
+msgid "Supported by"
+msgstr ""

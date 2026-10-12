@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Logo tile{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.tile">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">Every tile is the same width and the logo sits in the same band of each, so a square crest and a long wordmark line up. A tile with somewhere to go lifts under the pointer, and the whole of it is the link.</p>
+  </c-demo.head>
+
+  <c-container class="pb-10">
+    <div class="mt-6 grid grid-cols-1 gap-6">
+      <c-demo.tile>
+        <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.tile src="…" name="Northwind" note="Founding sponsor" href="https://example.com" />{% endverbatim %}{% endfilter %}</c-slot>
+        <div class="flex flex-wrap items-stretch justify-center gap-6 bg-base-200 p-10"><c-demo.tiles /></div>
+      </c-demo.tile>
+    </div>
+  </c-container>
+
+  <c-demo.live label="In a belt" anchor="tiles">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.belt eyebrow="Our sponsors" container="wide">… logo tiles …</c-logos.belt>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.belt eyebrow="Our sponsors" container="wide"><c-demo.tiles /></c-logos.belt>
+  </c-demo.live>
+{% endblock content %}

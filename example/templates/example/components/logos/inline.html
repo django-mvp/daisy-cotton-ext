@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Inline{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.inline">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">The quietest of the family. Narrow the window and the words move above the logos.</p>
+  </c-demo.head>
+
+  <c-demo.live label="Under a hero" anchor="hero">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-hero.centred title="…" lead="…">…</c-hero.centred>
+<c-logos.inline label="Trusted by teams at">… logos …</c-logos.inline>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-hero.centred level="2" size="sm" title="Ship on Fridays" lead="Every pull request gets an address of its own, and every release has a way back.">
+      <c-slot name="actions">
+        <a class="btn btn-primary" href="#hero">Start free</a>
+        <a class="btn btn-ghost" href="#hero">Read the docs</a>
+      </c-slot>
+    </c-hero.centred>
+    <c-logos.inline label="Trusted by teams at"><c-demo.logos href="#hero" /></c-logos.inline>
+  </c-demo.live>
+
+  <c-demo.live label="Logos as they are, a size up, on a tinted surface" anchor="original">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.inline label="Funded by" tone="original" logo-size="md" class="bg-base-200">… logos …</c-logos.inline>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.inline label="Funded by" tone="original" logo-size="md" class="bg-base-200"><c-demo.logos set="first" /><c-demo.logos set="second" /></c-logos.inline>
+  </c-demo.live>
+
+  <c-demo.live label="Ink, with a longer label and three logos" anchor="ink">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.inline label="A project of the Open Tide Foundation, with" tone="ink">… three logos …</c-logos.inline>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.inline label="A project of the Open Tide Foundation, with" tone="ink"><c-demo.logos set="three" /></c-logos.inline>
+  </c-demo.live>
+{% endblock content %}

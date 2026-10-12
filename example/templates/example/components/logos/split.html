@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Split{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.split">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">The request and the evidence side by side. Narrow the window and the words come first, with the rows under them.</p>
+  </c-demo.head>
+
+  <c-demo.live label="Three rows of logos beside the request" anchor="logos">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.split eyebrow="Sponsorship"
+               title="Put your name beside theirs"
+               lead="Sponsors pay for two maintainers and the servers. In return they get a say in the roadmap and a logo on this page."
+               tone="muted">
+  <c-marquee>… logos …</c-marquee>
+  <c-marquee speed="0.8">… logos …</c-marquee>
+  <c-marquee speed="1.2">… logos …</c-marquee>
+  <c-slot name="actions">
+    <a class="btn btn-primary" href="#">Become a sponsor</a>
+    <a class="btn btn-ghost" href="#">What sponsors get</a>
+  </c-slot>
+</c-logos.split>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.split eyebrow="Sponsorship"
+                   title="Put your name beside theirs"
+                   lead="Sponsors pay for two maintainers and the servers. In return they get a say in the roadmap and a logo on this page."
+                   tone="muted">
+      <c-marquee><c-demo.logos set="first" href="#logos" /><c-demo.logos set="second" href="#logos" /></c-marquee>
+      <c-marquee speed="0.8"><c-demo.logos set="third" href="#logos" /><c-demo.logos set="first" href="#logos" /></c-marquee>
+      <c-marquee speed="1.2"><c-demo.logos set="second" href="#logos" /><c-demo.logos set="third" href="#logos" /></c-marquee>
+      <c-slot name="actions">
+        <a class="btn btn-primary" href="#logos">Become a sponsor</a>
+        <a class="btn btn-ghost" href="#logos">What sponsors get</a>
+      </c-slot>
+    </c-logos.split>
+  </c-demo.live>
+
+  <c-demo.live label="Two rows of tiles, on the left" anchor="tiles">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.split title="Join the consortium"
+               lead="Membership is open to any institution that publishes its data under an open licence."
+               reverse class="bg-base-200">
+  <c-marquee speed="0.6">… logo tiles …</c-marquee>
+  <c-marquee speed="0.6">… logo tiles …</c-marquee>
+  <c-slot name="actions"><a class="btn btn-primary" href="#">Apply to join</a></c-slot>
+</c-logos.split>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.split title="Join the consortium"
+                   lead="Membership is open to any institution that publishes its data under an open licence."
+                   reverse
+                   class="bg-base-200">
+      <c-marquee speed="0.6"><c-demo.tiles /></c-marquee>
+      <c-marquee speed="0.6"><c-demo.tiles /></c-marquee>
+      <c-slot name="actions">
+        <a class="btn btn-primary" href="#tiles">Apply to join</a>
+      </c-slot>
+    </c-logos.split>
+  </c-demo.live>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{# @description A row of anything, moving across the page without end, like a conveyor belt. It stops under the pointer, while anything in it has focus, and when its pause control is pressed. #}
+{# @prop speed:number | default:"1" | description:"How quickly the row travels, as a multiple: 2 is twice as fast, 0.5 half. At 1 the row passes once in forty seconds, however much it holds." #}
+{# @prop reverse:boolean | default:False | description:"Travel from left to right" #}
+{# @prop gap:select['sm', 'md', 'lg'] | default:"md" | description:"The room between one item and the next" #}
+{# @prop fade:boolean | default:True | description:"Fade the row out at both ends, so items arrive and leave instead of being cut off" #}
+{# @prop controls:boolean | default:True | description:"Draw the pause control. Turn it off only when the page gives another way to stop the movement: without one, a keyboard or touch-screen visitor cannot." #}
+{# @prop pause:text | description:"The name of the pause control, for a screen reader. Say what is moving: Pause the sponsors' logos. Left empty, it is a translated Pause the movement." #}
+{# @prop class:text | description:"Extra classes on the outer element" #}
+{# @slot <span class="badge badge-soft">Django 6.1</span><span class="badge badge-soft">Python 3.13</span><span class="badge badge-soft">daisyUI 5</span> — The items. Anything at all: logos, cards, badges. Written once, in the order they pass. #}
+{% comment %}
+  The items are written out twice, and each copy slides left by its own width
+  plus one gap, which is exactly where the other copy started: no seam and no
+  script. The second copy is `inert`, so its links are not reached twice.
+
+  Each copy is at least as wide as the row, so three items spread across it
+  rather than passing in a clump with a hole behind them.
+
+  Under reduced motion there is one copy, holding still, wrapped and centred.
+
+  A marquee inside an element carrying `data-marquee-group` leaves its pause
+  control to the group's, which stops every row in it.
+{% endcomment %}
+<c-vars speed="1" reverse gap="md" fade="True" controls="True" pause class />
+<div data-marquee
+     class="dce:group/marquee dce:flex dce:items-center dce:gap-2
+            {% if reverse %}dce:[--marquee-direction:reverse]{% endif %}
+            {% if gap == 'sm' %}dce:[--marquee-gap:1.5rem]{% elif gap == 'lg' %}dce:[--marquee-gap:5rem]{% else %}dce:[--marquee-gap:3rem]{% endif %}
+            {{ class }}"
+     style="--marquee-speed: {{ speed|floatformat:'-3u'|default:'1' }}"
+     {{ attrs }}>
+  <div class="dce:flex dce:min-w-0 dce:flex-1 dce:gap-(--marquee-gap) dce:overflow-hidden dce:py-1
+              {% if fade %}dce:motion-safe:[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]{% endif %}">
+    <div class="dce:flex dce:min-w-full dce:shrink-0 dce:items-center dce:justify-around dce:gap-(--marquee-gap)
+                dce:motion-safe:animate-[dce-marquee_calc(40s/var(--marquee-speed,1))_linear_infinite_var(--marquee-direction,normal)_var(--marquee-state,running)]
+                dce:group-hover/marquee:[--marquee-state:paused]
+                dce:group-focus-within/marquee:[--marquee-state:paused]
+                dce:in-[[data-marquee]:has([data-marquee-pause]:checked)]:[--marquee-state:paused]
+                dce:in-[[data-marquee-group]:has([data-marquee-pause]:checked)]:[--marquee-state:paused]
+                dce:motion-reduce:shrink dce:motion-reduce:flex-wrap dce:motion-reduce:justify-center dce:motion-reduce:gap-y-6">{{ slot }}</div>
+    <div aria-hidden="true"
+         inert
+         class="dce:flex dce:min-w-full dce:shrink-0 dce:items-center dce:justify-around dce:gap-(--marquee-gap)
+                dce:motion-safe:animate-[dce-marquee_calc(40s/var(--marquee-speed,1))_linear_infinite_var(--marquee-direction,normal)_var(--marquee-state,running)]
+                dce:group-hover/marquee:[--marquee-state:paused]
+                dce:group-focus-within/marquee:[--marquee-state:paused]
+                dce:in-[[data-marquee]:has([data-marquee-pause]:checked)]:[--marquee-state:paused]
+                dce:in-[[data-marquee-group]:has([data-marquee-pause]:checked)]:[--marquee-state:paused]
+                dce:motion-reduce:hidden">{{ slot }}</div>
+  </div>
+  {% if controls %}<c-marquee.pause :label="pause" class="dce:in-data-marquee-group:hidden" only />{% endif %}
+</div>

@@ -134,6 +134,8 @@ non-mirror-paths = [
     "tests/test_quote_blocks.py",
     "tests/test_stats_blocks.py",
     "tests/test_footer_blocks.py",
+    "tests/test_logos_blocks.py",
+    "tests/test_marquee_blocks.py",
     "tests/test_sign_in_blocks.py",
     "tests/test_sign_up_blocks.py",
     "tests/test_auth_blocks.py",

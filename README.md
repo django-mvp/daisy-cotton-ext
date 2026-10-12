@@ -28,7 +28,7 @@ Blocks are configured through attributes and take their colours from whatever da
 
 ## Status
 
-Version 0.0.1. Twelve families are built: the section and its columns, the heading, heroes, backgrounds, text effects, reveals, quotes, stats, footers, points, sign-in pages and sign-up pages. Nothing here is stable. Block names, attributes and the set of classes the stylesheet emits all change between minor versions, and the [CHANGELOG](https://github.com/django-mvp/daisy-cotton-ext/blob/main/CHANGELOG.md) is how a project finds out.
+Version 0.0.1. Fourteen families are built: the section and its columns, the heading, heroes, backgrounds, text effects, reveals, quotes, stats, footers, logos, the marquee, points, sign-in pages and sign-up pages. Nothing here is stable. Block names, attributes and the set of classes the stylesheet emits all change between minor versions, and the [CHANGELOG](https://github.com/django-mvp/daisy-cotton-ext/blob/main/CHANGELOG.md) is how a project finds out.
 
 ## Scope & philosophy
 
@@ -532,6 +532,69 @@ Things to know before using one:
 - **The two parts work on their own.** Use `<c-footer.brand>` and `<c-footer.legal>` inside daisy-cotton's `<c-footer>`, or under a footer you lay out yourself.
 
 The reasoning is in [ADR 0013](docs/adr/0013-a-footer-block-is-the-footer-element.md).
+
+### Logos and the marquee
+
+Sponsors, funders and partner organisations on a moving belt: the logos are written once and pass across the page without end. Five are blocks, three are the parts that go inside them, and all of them are built on `<c-marquee>`, which carries anything.
+
+| Tag | What it does | Its own attributes |
+|---|---|---|
+| `<c-logos.belt>` | One line of logos under a short heading | `eyebrow`, `title`, `lead`, `level`, `logo-size`, `speed`, `reverse`, `container`, `size` |
+| `<c-logos.rows>` | Several lines, every second one travelling the other way | `eyebrow`, `title`, `lead`, `level`, `logo-size`, `container`, `size` |
+| `<c-logos.inline>` | A slim band: a few words on the left, the logos passing on the right | `label`, `logo-size`, `speed`, `reverse` |
+| `<c-logos.tiers>` | Sponsors by level, one labelled line for each | `eyebrow`, `title`, `lead`, `level`, `size` |
+| `<c-logos.split>` | The request to join on one side, rows of logos on the other | `eyebrow`, `title`, `lead`, `level`, `logo-size`, `reverse` |
+| `<c-logos.logo>` | One logo, held to its neighbours' height, and a link when given an `href` | `src`, `name`, `href`, `tone`, `size` |
+| `<c-logos.tile>` | A logo on a card, with the organisation's name and a line about it | `src`, `name`, `note`, `href` |
+| `<c-logos.tier>` | One level inside `<c-logos.tiers>` | `label`, `note`, `logo-size`, `speed` |
+| `<c-marquee>` | A moving row of anything: logos, cards, badges | `speed`, `reverse`, `gap`, `fade`, `controls`, `pause` |
+| `<c-marquee.pause>` | The pause control, for a layout of your own with several marquees | `label` |
+
+Every block also takes `tone`, `controls`, `pause` and `class`.
+
+```html
+<c-logos.belt eyebrow="Supported by" tone="ink">
+  <c-logos.logo src="{% static 'img/northwind.svg' %}" name="Northwind" href="https://northwind.example" />
+  <c-logos.logo src="{% static 'img/papaya.svg' %}" name="Papaya" href="https://papaya.example" />
+  <c-logos.logo src="{% static 'img/larkspur.svg' %}" name="Larkspur University" />
+</c-logos.belt>
+
+<c-logos.tiers title="Our sponsors">
+  <c-logos.tier label="Gold" note="Funds a maintainer" logo-size="lg" speed="0.6">
+    <c-logos.logo src="{% static 'img/northwind.svg' %}" name="Northwind" />
+  </c-logos.tier>
+  <c-logos.tier label="Silver">
+    <c-logos.logo src="{% static 'img/papaya.svg' %}" name="Papaya" />
+    <c-logos.logo src="{% static 'img/fjordline.svg' %}" name="Fjordline" />
+  </c-logos.tier>
+  <c-slot name="actions"><a class="btn btn-primary" href="/sponsor/">Become a sponsor</a></c-slot>
+</c-logos.tiers>
+
+<c-logos.rows title="Participating organisations" tone="muted">
+  <c-marquee>…</c-marquee>
+  <c-marquee speed="0.8">…</c-marquee>
+</c-logos.rows>
+
+<c-marquee speed="0.5" gap="sm" pause="Pause the moving quotations">
+  <c-quote.card class="max-w-xs shrink-0" name="Amara Okafor">“Friday afternoon stopped being frightening.”</c-quote.card>
+  <c-quote.card class="max-w-xs shrink-0" name="Mei Tanaka">“The audit log answered first.”</c-quote.card>
+</c-marquee>
+```
+
+Things to know before using one:
+
+- **`tone` decides how every logo in a block is drawn.** `original` is each file as it is. `muted` is grey and quiet until the pointer reaches it. `ink` is each logo's shape in the colour of the text around it. A black wordmark drawn as it is disappears on a dark theme, and `ink` is the tone that holds on every theme. It wants a logo with a clear background, because it paints the whole shape of the file.
+- **Logos share a height and keep their own width.** `logo-size` on the block sets the height for all of them, and `size` on one logo overrides it. Give `name` on every logo: it is the image's text.
+- **The belt stops under the pointer, while anything in it has keyboard focus, and when its pause control is pressed.** A block with several rows draws one control for all of them.
+- **Think before turning the pause control off.** `:controls="False"` removes it. A mouse still stops the belt, and so does the keyboard when the logos are links. A touch screen then has no way to stop it, and movement that runs for more than five seconds beside other content with no way to stop it fails WCAG 2.2.2. Turn it off when the page gives another way.
+- **Nothing moves for a visitor who has asked their system to reduce motion.** They get the same logos, still, wrapped onto as many lines as they need.
+- **`speed` is how often the row comes round,** as a multiple of once in forty seconds. A row holding more travels faster across the screen at the same number, so turn it down as the row grows.
+- **Each row is written out twice in the page.** That is what makes the loop seamless. The second copy is hidden from assistive technology and cannot be reached by keyboard. Keep an `id` off anything inside a marquee, or it will appear twice.
+- **`ink` needs inline styles.** The logo's address reaches the stylesheet through the `style` attribute. A page whose content security policy drops inline styles shows the logo as it is.
+- **Rows and tiers take their rows from you.** `<c-logos.rows>` and `<c-logos.split>` hold one `<c-marquee>` for each row, and `<c-logos.tiers>` holds one `<c-logos.tier>` for each level.
+- **The pause control needs daisyUI's `btn`, `btn-ghost`, `btn-sm` and `btn-circle` from the project,** and the tile needs `card`.
+
+The reasoning is in [ADR 0014](docs/adr/0014-a-marquee-moves-by-css-and-can-always-be-stopped.md) and [ADR 0003](docs/adr/0003-amounts-are-numbers-written-to-style.md).
 
 Every attribute, its accepted values and its default are listed on each block's and component's own page in the example project, built from the annotations in the block's template. Run it with `python manage.py runserver` from a checkout.
 

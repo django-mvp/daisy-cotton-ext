@@ -1,0 +1,27 @@
+{# @description A logo on a card of its own, with the organisation's name and a line about it underneath. For logos that differ too much in shape or colour to sit in a bare row. #}
+{# @prop src:text | description:"Address of the logo image" #}
+{# @prop name:text | description:"The organisation's name, shown under the logo" #}
+{# @prop note:text | description:"A line under the name: what they give, or since when" #}
+{# @prop href:text | description:"Where the card leads. Left out, the card is not a link." #}
+{# @prop class:text | description:"Extra classes on the card" #}
+{% comment %}
+  The name is written out under the logo, so the image carries no text of its
+  own and a screen reader says the name once. The link is the name, stretched
+  over the whole card.
+
+  The card is daisyUI's class with its own padding where `card-body` would be,
+  as the quote card is.
+{% endcomment %}
+<c-vars src name note href class />
+<div class="card dce:relative dce:w-56 dce:shrink-0 dce:gap-2 dce:self-stretch dce:bg-base-100 dce:p-6 dce:shadow-sm
+            {% if href %}dce:transition-all dce:duration-300 dce:hover:-translate-y-1 dce:hover:shadow-md{% endif %}
+            {{ class }}"
+     {{ attrs }}>
+  <span class="dce:flex dce:h-16 dce:items-center dce:[--logo-max:11rem] dce:[--logo-size:2.5rem]">
+    <c-logos.logo :src="src" name="" only />
+  </span>
+  {# djlint:off #}
+  <p class="dce:font-semibold">{% if href %}<a href="{{ href }}" class="dce:after:absolute dce:after:inset-0">{{ name }}</a>{% else %}{{ name }}{% endif %}</p>
+  {# djlint:on #}
+  {% if note %}<p class="dce:text-sm dce:text-base-content/80">{{ note }}</p>{% endif %}
+</div>

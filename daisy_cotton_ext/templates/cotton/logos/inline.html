@@ -1,0 +1,25 @@
+{# @description A slim band: a few words on the left and the logos passing on the right. It sits straight under a hero without becoming a section of its own. #}
+{# @prop label:text | description:"The words beside the logos. Left empty, they are a translated Supported by." #}
+{# @prop tone:select['original', 'muted', 'ink'] | default:"muted" | description:"How the logos are drawn. original is each file as it is. muted is grey until the pointer reaches it. ink is each logo's shape in the text colour, which holds on every theme." #}
+{# @prop logo-size:select['sm', 'md', 'lg'] | default:"sm" | description:"How tall the logos are" #}
+{# @prop speed:number | default:"1" | description:"How quickly the logos travel, as a multiple: 2 is twice as fast, 0.5 half" #}
+{# @prop reverse:boolean | default:False | description:"Travel from left to right" #}
+{# @prop controls:boolean | default:True | description:"Draw the pause control. Turn it off only when the page gives another way to stop the movement: without one, a keyboard or touch-screen visitor cannot." #}
+{# @prop pause:text | description:"The name of the pause control, for a screen reader. Left empty, it is a translated Pause the moving logos." #}
+{# @prop class:text | description:"Extra classes on the outer section. A plain surface colour goes here: bg-base-200." #}
+{# @slot <c-logos.logo src="…" name="Northwind" /><c-logos.logo src="…" name="Papaya" /> — The logos, in the order they pass #}
+{% comment %}
+  Below the lg breakpoint the words go above the logos, centred. Beside them
+  there, the belt would be too short to show two logos at once.
+{% endcomment %}
+<c-vars label tone="muted" logo-size="sm" speed="1" reverse controls="True" pause class />
+{% load i18n %}
+{% translate "Pause the moving logos" as pause_default %}
+<c-section flush class="dce:border-y dce:border-base-300 dce:py-6 {{ class }}" :attrs="attrs" only>
+  <div data-logo-tone="{{ tone }}"
+       class="dce:flex dce:flex-col dce:items-center dce:gap-4 dce:lg:flex-row dce:lg:gap-8
+              {% if logo_size == 'lg' %}dce:[--logo-size:3rem]{% elif logo_size == 'md' %}dce:[--logo-size:2rem]{% else %}dce:[--logo-size:1.5rem]{% endif %}">
+    <p class="dce:shrink-0 dce:text-sm dce:font-semibold dce:text-base-content/80">{% if label %}{{ label }}{% else %}{% translate "Supported by" %}{% endif %}</p>
+    <c-marquee :speed="speed" :reverse="reverse" pause="{{ pause|default:pause_default }}" :controls="controls" gap="md" class="dce:w-full dce:min-w-0 dce:lg:flex-1" only>{{ slot }}</c-marquee>
+  </div>
+</c-section>

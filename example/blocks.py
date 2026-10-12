@@ -238,6 +238,21 @@ FAMILIES: tuple[Family, ...] = (
         ),
     ),
     Family(
+        slug="logos",
+        label="Logos",
+        kind="block",
+        components=(
+            Component("belt", "Belt", group="Blocks"),
+            Component("rows", "Rows", group="Blocks"),
+            Component("inline", "Inline", group="Blocks"),
+            Component("tiers", "Tiers", group="Blocks"),
+            Component("split", "Split", group="Blocks"),
+            Component("logo", "Logo", group="Parts", kind="component"),
+            Component("tile", "Logo tile", group="Parts", kind="component"),
+            Component("tier", "Tier", group="Parts", kind="component"),
+        ),
+    ),
+    Family(
         slug="footer",
         label="Footers",
         kind="block",
@@ -257,6 +272,7 @@ FAMILIES: tuple[Family, ...] = (
         components=(
             Component("heading", "Heading", tag_name="c-heading"),
             Component("points", "Points", tag_name="c-points"),
+            Component("marquee", "Marquee", tag_name="c-marquee"),
             Component("panel", "Sign-in panel", tag_name="c-auth.panel"),
         ),
     ),

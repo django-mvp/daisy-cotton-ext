@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `<c-marquee>`, a row of anything that travels across the page without end. It moves by CSS
+  alone, stops under the pointer and while anything in it has focus, holds still under reduced
+  motion, and draws a pause control. `speed` is a number, and `reverse`, `gap`, `fade`, `controls`
+  and `pause` are its other options. `<c-marquee.pause>` is the control on its own.
+- A logos family, for sponsors and participating organisations. `<c-logos.belt>` is one line of
+  logos under a heading, `<c-logos.rows>` is several lines running opposite ways,
+  `<c-logos.inline>` is a slim band with a label beside it, `<c-logos.tiers>` lists sponsors by
+  level, and `<c-logos.split>` puts the request to join beside the logos. `<c-logos.logo>`,
+  `<c-logos.tile>` and `<c-logos.tier>` are the parts. `tone` draws every logo in a block as it
+  is, muted until hovered, or as its shape in the text colour.
+
+### Changed
+
+- The blocks now rely on daisyUI's `btn-circle` class from the project, part of daisyUI 5.
+- A logo writes its image's address to its `style` attribute, for the `ink` tone. Until now only
+  numbers were written there.
+
 ## [v0.4.0] - 2026-10-11
 
 ### Added

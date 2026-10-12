@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Tiers{% endblock title %}
+
+{% block content %}
+  <c-demo.head tag="c-logos.tiers">
+    <p class="mt-4 max-w-3xl dce:text-base-content/80">Each level is a <code>&lt;c-logos.tier&gt;</code>. Step the logo size down from one level to the next and the order reads without the labels. Narrow the window and each label moves above its logos.</p>
+  </c-demo.head>
+
+  <c-demo.live label="Three levels and the way to join" anchor="three">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.tiers eyebrow="Sponsors"
+               title="The people who keep the lights on"
+               lead="Meridian is free, and these organisations pay for the time it takes to keep it that way.">
+  <c-logos.tier label="Gold" note="Funds a maintainer" logo-size="lg" speed="0.6">… logos …</c-logos.tier>
+  <c-logos.tier label="Silver" speed="0.8">… logos …</c-logos.tier>
+  <c-logos.tier label="Bronze" logo-size="sm">… logos …</c-logos.tier>
+  <c-slot name="actions"><a class="btn btn-primary" href="#">Become a sponsor</a></c-slot>
+</c-logos.tiers>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.tiers eyebrow="Sponsors"
+                   title="The people who keep the lights on"
+                   lead="Meridian is free, and these organisations pay for the time it takes to keep it that way.">
+      <c-logos.tier label="Gold" note="Funds a maintainer" logo-size="lg" speed="0.6"><c-demo.logos set="first" href="#three" /></c-logos.tier>
+      <c-logos.tier label="Silver" speed="0.8"><c-demo.logos set="second" href="#three" /><c-demo.logos set="third" href="#three" /></c-logos.tier>
+      <c-logos.tier label="Bronze" logo-size="sm"><c-demo.logos href="#three" /></c-logos.tier>
+      <c-slot name="actions"><a class="btn btn-primary" href="#three">Become a sponsor</a></c-slot>
+    </c-logos.tiers>
+  </c-demo.live>
+
+  <c-demo.live label="Two kinds of organisation, in ink, with no way to join" anchor="kinds">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.tiers title="Who takes part" tone="ink" size="sm" class="bg-base-200">
+  <c-logos.tier label="Universities">… logos …</c-logos.tier>
+  <c-logos.tier label="Funding bodies" note="2024 to 2027">… three logos …</c-logos.tier>
+</c-logos.tiers>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.tiers title="Who takes part" tone="ink" size="sm" class="bg-base-200">
+      <c-logos.tier label="Universities"><c-demo.logos set="second" /><c-demo.logos set="third" /></c-logos.tier>
+      <c-logos.tier label="Funding bodies" note="2024 to 2027"><c-demo.logos set="three" /></c-logos.tier>
+    </c-logos.tiers>
+  </c-demo.live>
+
+  <c-demo.live label="One level, one sponsor" anchor="one">
+    <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.tiers title="Our first sponsor">
+  <c-logos.tier label="Founding" logo-size="xl">… one logo …</c-logos.tier>
+</c-logos.tiers>{% endverbatim %}{% endfilter %}</c-slot>
+    <c-logos.tiers title="Our first sponsor">
+      <c-logos.tier label="Founding" logo-size="xl"><c-demo.logos set="one" /></c-logos.tier>
+      <c-slot name="actions"><a class="btn btn-outline" href="#one">Be the second</a></c-slot>
+    </c-logos.tiers>
+  </c-demo.live>
+{% endblock content %}

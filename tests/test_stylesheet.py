@@ -29,7 +29,6 @@ from pathlib import Path
 import pytest
 from django.contrib.staticfiles import finders
 from django_cotton_gallery.core.annotations import AnnotationParser
-from playwright.sync_api import sync_playwright
 
 BLOCKS_STYLESHEET = "css/daisy-cotton-ext.css"
 HOST_STYLESHEET = "css/django-mvp.css"
@@ -411,15 +410,8 @@ WIDER_THAN_EVERY_BREAKPOINT = {"width": 1280, "height": 800}
 
 
 @pytest.fixture(scope="module")
-def page():
-    with sync_playwright() as playwright:
-        if not Path(playwright.chromium.executable_path).exists():
-            pytest.skip(
-                "Chromium is not installed: run `uv run playwright install chromium`"
-            )
-        browser = playwright.chromium.launch()
-        yield browser.new_page(viewport=WIDER_THAN_EVERY_BREAKPOINT)
-        browser.close()
+def page(browser):
+    return browser.new_page(viewport=WIDER_THAN_EVERY_BREAKPOINT)
 
 
 def host_stylesheet(name: str) -> str:

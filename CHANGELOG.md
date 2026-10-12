@@ -26,6 +26,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - A logo writes its image's address to its `style` attribute, for the `ink` tone. Until now only
   numbers were written there.
 
+### Fixed
+
+- `<c-stats.count>` counts up once and keeps its number. It used to fall back to 0 whenever the
+  figure dropped below the window, and count again on the way back (#49).
+
 ## [v0.4.0] - 2026-10-11
 
 ### Added

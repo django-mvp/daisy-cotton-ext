@@ -1,5 +1,5 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.12, <4.0"
 resolution-markers = [
     "python_full_version >= '3.15'",
@@ -390,19 +390,6 @@ wheels = [
 ]
 
 [[package]]
-name = "crispy-tailwind"
-version = "1.0.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-    { name = "django-crispy-forms" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ae/ac/a307ae5ce869d7151b90d4b8b042a48eb454a936dacc695f6418486e5bd8/crispy-tailwind-1.0.3.tar.gz", hash = "sha256:2bc9f616d406e4b003f25d46fcb0079f1c2522719d97adb107667271d849459a", size = 19172, upload-time = "2024-02-13T09:52:37.895Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c9/ca/11f65e24f3c182dfaf90fd3710d2dcca0fbc3026923e47b43f52a4a2349b/crispy_tailwind-1.0.3-py3-none-any.whl", hash = "sha256:31427f66b1c4fd0d6fb040f4197cfb97d104cdbe7641ea2dea940c0057c4db4b", size = 25700, upload-time = "2024-02-13T09:52:35.928Z" },
-]
-
-[[package]]
 name = "cssbeautifier"
 version = "2.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -493,16 +480,16 @@ wheels = [
 
 [[package]]
 name = "django"
-version = "6.1.1"
+version = "6.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "asgiref" },
     { name = "sqlparse" },
     { name = "tzdata", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f8/d4/8314b5bdef20832f0ac6ae3b3e4d4924e4759fa3b4af27609dd747e7a6be/django-6.1.1.tar.gz", hash = "sha256:7ab93536d8e677aa14554c56426290c69480bf2ee68d7513d4a22f57d6bfeb84", size = 11284905, upload-time = "2026-09-02T17:20:45.621Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/89/24/20d187a22ac821288b53c53b8f696019dcb0c7b4f973f052ade19392c74d/django-6.1.2.tar.gz", hash = "sha256:a1e92451ccb8b514e91bbb3b6d186d20b4030558f116b5d9de6535455ff210b7", size = 11251425, upload-time = "2026-10-06T12:53:29.622Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8d/ca/c1040a4fd15754ede7df15fd72fc2e123045b473b253ab5f5284e11c651e/django-6.1.1-py3-none-any.whl", hash = "sha256:585fb82bf15053c42cf52e67c2f1b54a032dca384759315fd6678ab1870d1d72", size = 8419512, upload-time = "2026-09-02T17:20:39.153Z" },
+    { url = "https://files.pythonhosted.org/packages/c9/83/90ff2dbfac7b519ed77620bdbb827cd2d1a83faf00d076bf95056428bce7/django-6.1.2-py3-none-any.whl", hash = "sha256:141efee6ec64d1db6db90683bf734c550102450f444fb099063b0be1bd27d991", size = 8420684, upload-time = "2026-10-06T12:53:17.381Z" },
 ]
 
 [[package]]
@@ -532,15 +519,15 @@ wheels = [
 
 [[package]]
 name = "django-cotton-gallery"
-version = "1.0.0"
+version = "1.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "django-cotton" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/47/d1/36e049c71d1867650e762229a9c3466f97feda82f6092011142c5a67a59a/django_cotton_gallery-1.0.0.tar.gz", hash = "sha256:1a4d430b7c84d563b7a6507ace299af71852a4ef497984a03ff0355696f0451b", size = 437563, upload-time = "2026-09-12T17:03:05.179Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/35/ec/14cd2d6d37e00235b2a64b6ac374a5552a9369cc5e5a67f467739489b801/django_cotton_gallery-1.0.1.tar.gz", hash = "sha256:8cf4c18e08b5fa25503f0c70fb38ae4ac777e09f9dc224897bc69d4fd48b9e06", size = 437749, upload-time = "2026-10-08T16:55:02.27Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/49/b6/f0b47cdf50f75fd8cbf2edbbc421d0cc28b1d801a29a15d404c26125ce9d/django_cotton_gallery-1.0.0-py3-none-any.whl", hash = "sha256:6bb4813a1c3cb6db054886a1e26c6ab35bb1c9bcc897fbdb9e10f0f4ddcdf125", size = 492441, upload-time = "2026-09-12T17:03:03.55Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/a5/1d8542dd19d5fb30aa41fa25e5abbffecf8e0221e796e20e32da6dda31e1/django_cotton_gallery-1.0.1-py3-none-any.whl", hash = "sha256:49d7c698e0a5d7e94c2ac2063399b5d409214100e36fac2d57ff592ee342c7c5", size = 492652, upload-time = "2026-10-08T16:55:00.704Z" },
 ]
 
 [[package]]
@@ -648,20 +635,34 @@ wheels = [
 
 [[package]]
 name = "django-mvp"
-version = "0.25.1"
+version = "0.28.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "crispy-tailwind" },
+    { name = "daisy-cotton" },
     { name = "django" },
     { name = "django-cotton" },
     { name = "django-crispy-forms" },
     { name = "django-easy-icons" },
     { name = "django-flex-menus" },
+    { name = "django-mvp-forms" },
     { name = "mergedeep" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/cd/e9/a48b73cd2b36833f6eb5af0c4c12afab59c42b3f791ed28f88b55e7edab4/django_mvp-0.25.1.tar.gz", hash = "sha256:38873d643593af1bfdd50b993e7003cf7942ef5161bec16575ffd331c81ba88b", size = 284427, upload-time = "2026-09-29T20:27:11.028Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/fd/3a8840fc4d9b8fe9b975c28f150064e7f03cb497cf7a807999847406475d/django_mvp-0.28.1.tar.gz", hash = "sha256:5fa4d27a72c2f7bf450f17415746507b77a4e4da7fb105fb5c3a9ccb4da1a338", size = 294583, upload-time = "2026-10-09T20:49:14.954Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/32/3c/a24d5635ac959716a3d9f68ca8d48f70a77ca6e4e581af1ef9f87aa09edf/django_mvp-0.25.1-py3-none-any.whl", hash = "sha256:ff22f75f4466f2a478747ba70294be0d3edc6226c8f60e2838b7fdc4577409c9", size = 340677, upload-time = "2026-09-29T20:27:09.448Z" },
+    { url = "https://files.pythonhosted.org/packages/b4/2c/dfaed45f55d93052473506fc3789766a894e32539d183c07ab40b49652ff/django_mvp-0.28.1-py3-none-any.whl", hash = "sha256:96d33222923689c44b21477912a3a21208b5e0546823fbd8f3c3936aa7033bd7", size = 345486, upload-time = "2026-10-09T20:49:13.504Z" },
+]
+
+[[package]]
+name = "django-mvp-forms"
+version = "0.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "django-crispy-forms" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/df/54/42d62b14c34de8468b54526f1f40ac5acff28bc625d31985d7b5e51a7f4c/django_mvp_forms-0.3.0.tar.gz", hash = "sha256:4c8ed5b452a7ed95760eb2fb327fbd3753ae4404919b9cb944b3985f04275766", size = 149304, upload-time = "2026-10-10T13:35:20.719Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2b/1f/8d910b4ac9e7a2ae3125f6d4ccdaf9bf6604e43659c2139d7815e2f85746/django_mvp_forms-0.3.0-py3-none-any.whl", hash = "sha256:0b10a2d060eb0f33a6908a6eb7d693498fe31149de1dec18b44e811dcdb9792d", size = 116135, upload-time = "2026-10-10T13:35:18.976Z" },
 ]
 
 [[package]]

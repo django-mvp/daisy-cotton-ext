@@ -9,7 +9,7 @@
     <p class="mt-4 max-w-3xl dce:text-base-content/80">Speed is how often the row comes round, so a row holding more travels faster across the screen at the same number. Turn it down as the row grows.</p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
       <c-demo.tile>
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee gap="sm"><span class="badge badge-soft badge-lg">Django 6.1</span>…</c-marquee>{% endverbatim %}{% endfilter %}</c-slot>
@@ -44,7 +44,7 @@
         </div>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="Carrying quotations" anchor="quotes">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-marquee speed="0.5" gap="sm" class="py-12">

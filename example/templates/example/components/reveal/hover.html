@@ -9,7 +9,7 @@
     </p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <p class="max-w-3xl dce:text-base-content/80"><strong>Point at a picture, or tab to it.</strong> On a touch screen there is nothing to point with, so the caption shows all the time.</p>
     <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
       <c-demo.tile>
@@ -41,14 +41,14 @@
         </c-reveal.hover>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="A gallery row" anchor="gallery">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
   <c-reveal.hover class="rounded-box" label="…">…</c-reveal.hover>
   …
 </div>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <c-reveal.hover class="rounded-box" label="Site 11">
           <img class="dce:aspect-square w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
@@ -67,16 +67,16 @@
           <c-slot name="caption"><strong>Site 14</strong><span class="text-sm">Northern ridge, 2,140 m</span></c-slot>
         </c-reveal.hover>
       </div>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Over a card, not a picture" anchor="card">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.hover effect="cover" class="rounded-box" label="…"><div class="card bg-base-200">…</div><c-slot name="caption">…</c-slot></c-reveal.hover>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <c-reveal.hover effect="cover" zoom="1" class="mx-auto max-w-md rounded-box" label="Team plan">
         <div class="card bg-base-200"><div class="card-body"><h3 class="card-title">Team</h3><p class="text-4xl font-bold">€29</p><p>Per person, each month. Up to forty services.</p></div></div>
         <c-slot name="caption"><strong class="text-lg">What is in it</strong><span class="text-sm">Preview environments, named approvals, one-click rollback and a year of audit log.</span></c-slot>
       </c-reveal.hover>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 {% endblock content %}

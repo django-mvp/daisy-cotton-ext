@@ -98,7 +98,7 @@
       </c-slot>
       {% for kind in catalogue %}
         <c-section.col>
-          <c-card title="{{ kind.label }}">
+          <c-mvp.card title="{{ kind.label }}">
             <p>{{ kind.lead }}</p>
             <c-points class="mt-6">
               {% for family in kind.families %}
@@ -108,7 +108,7 @@
                 </c-points.point>
               {% endfor %}
             </c-points>
-          </c-card>
+          </c-mvp.card>
         </c-section.col>
       {% endfor %}
     </c-section>
@@ -121,23 +121,23 @@
       </c-slot>
       <c-section.col>
         <c-reveal.enter>
-          <c-card title="Not an application">
+          <c-mvp.card title="Not an application">
             No models, views, forms, URLs or migrations. What a block says comes from the template author, never from a queryset.
-          </c-card>
+          </c-mvp.card>
         </c-reveal.enter>
       </c-section.col>
       <c-section.col>
         <c-reveal.enter>
-          <c-card title="Not a CSS framework">
+          <c-mvp.card title="Not a CSS framework">
             daisyUI, its themes and the page reset come from your project. The stylesheet here carries only the utilities its own blocks need.
-          </c-card>
+          </c-mvp.card>
         </c-reveal.enter>
       </c-section.col>
       <c-section.col>
         <c-reveal.enter>
-          <c-card title="Not page templates">
+          <c-mvp.card title="Not page templates">
             Blocks only. You pick the ones you want and put the page together yourself. There is no one-tag landing page.
-          </c-card>
+          </c-mvp.card>
         </c-reveal.enter>
       </c-section.col>
     </c-section>

@@ -13,7 +13,7 @@
     </p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <c-demo.tile>
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-stats.progress title="Raised this quarter" value="€42k" percent="70" desc="of a €60k target" />{% endverbatim %}{% endfilter %}</c-slot>
@@ -48,14 +48,14 @@
         <c-stat.group class="w-full"><c-stats.progress value="12" percent="50" /></c-stat.group>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="Three targets side by side" anchor="row">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-stat.group class="w-full">
   <c-stats.progress title="Raised this quarter" value="€42k" percent="70" desc="of a €60k target" />
   …
 </c-stat.group>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <div class="overflow-x-auto">
         <c-stat.group class="w-full">
           <c-stats.progress title="Raised this quarter" value="€42k" percent="70" desc="of a €60k target" />
@@ -63,11 +63,11 @@
           <c-stats.progress title="Renewals" value="46" percent="92" variant="accent" desc="of 50 due" />
         </c-stat.group>
       </div>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
   <c-demo.live label="With an icon" anchor="icon">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-stats.progress icon="money" title="Raised this quarter" value="€42k" percent="70" desc="of a €60k target" />{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <p class="mb-8 max-w-3xl dce:text-base-content/80">The icon is optional on every one of these. <code>icon</code> takes a name and hands it to the project's own <code>c-icon</code>, so it draws whatever icon set the project already uses. For anything that is not an icon, fill the <code>figure</code> slot.</p>
       <div class="overflow-x-auto">
         <c-stat.group class="w-full">
@@ -80,6 +80,6 @@
         <c-stat.group class="w-full"><c-stats.progress icon="money" title="Recurring revenue across every region, after refunds and credits" value="€1,284,900.00" percent="64" desc="of the two million the board set as the target for the end of the financial year" /></c-stat.group>
         <c-stat.group class="w-full"><c-stats.progress icon="services" value="12" percent="50" /></c-stat.group>
       </div>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 {% endblock content %}

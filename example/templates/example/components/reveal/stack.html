@@ -45,7 +45,7 @@
   <section class="rounded-box bg-base-100 shadow-xl">…</section>
   …
 </c-reveal.stack>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <p class="mb-8 max-w-3xl dce:text-base-content/80"><code>top="5"</code> stops each card five rem down, clear of the bar above. <code>step="1.5"</code> stops each one a little lower than the last.</p>
       <c-reveal.stack top="5" step="1.5" class="mx-auto max-w-3xl dce:space-y-10">
         <section class="bg-base-100 text-base-content rounded-box shadow-xl dce:ring-1 dce:ring-base-300">
@@ -70,7 +70,7 @@
           </div>
         </section>
       </c-reveal.stack>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="One panel" anchor="one">
@@ -86,7 +86,7 @@
     </c-reveal.stack>
   </c-demo.live>
 
-  <c-container class="dce:py-24">
+  <c-mvp.container class="dce:py-24">
     <p class="mx-auto max-w-2xl dce:text-base-content/80">Whatever follows the stack scrolls over its last panel in the same way.</p>
-  </c-container>
+  </c-mvp.container>
 {% endblock content %}

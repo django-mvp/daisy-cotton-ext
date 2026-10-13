@@ -1,0 +1,23 @@
+{# @description One labelled field of a stand-in form, built from the base fieldset, label and input components. #}
+{# @prop label:text | description:"The field's label" #}
+{# @prop id:text | description:"The input's id, which the label points at" #}
+{# @prop errors:text | description:"What was wrong with the value, shown under the input" #}
+{# @prop help-text:text | description:"A hint shown under the input" #}
+{# @prop size:text | description:"The input's size, on daisyUI's scale" #}
+<c-vars label id errors help-text size />
+<c-form.fieldset id="{{ id }}-field" :errors="errors" :description="help_text" only>
+  <c-form.label for="{{ id }}" :text="label" only />
+  {% if errors %}
+    <c-form.input id="{{ id }}"
+                  :size="size"
+                  variant="error"
+                  class="w-full"
+                  aria-invalid="true"
+                  aria-describedby="{{ id }}-field-errors"
+                  :attrs="attrs" />
+  {% elif help_text %}
+    <c-form.input id="{{ id }}" :size="size" class="w-full" aria-describedby="{{ id }}-field-description" :attrs="attrs" />
+  {% else %}
+    <c-form.input id="{{ id }}" :size="size" class="w-full" :attrs="attrs" />
+  {% endif %}
+</c-form.fieldset>

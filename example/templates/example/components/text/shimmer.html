@@ -15,7 +15,7 @@
     </p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
       <c-demo.specimen note="The default: a crossing of about a second, every three and a half.">
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-text.shimmer>Now in public beta</c-text.shimmer>{% endverbatim %}{% endfilter %}</c-slot>
@@ -42,7 +42,7 @@
         <c-text.shimmer repeat="1">Now in public beta</c-text.shimmer>
       </c-demo.specimen>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="Inside a heading, at size" anchor="in-place">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-hero.centred size="lg">

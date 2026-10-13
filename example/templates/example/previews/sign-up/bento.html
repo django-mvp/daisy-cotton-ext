@@ -8,25 +8,25 @@
     <c-demo.auth.sign-up-form :state="state" />
     <c-slot name="footer"><c-demo.auth.terms /></c-slot>
     <c-slot name="tiles">
-      <c-card class="bg-primary text-primary-content">
+      <c-mvp.card class="bg-primary text-primary-content">
         <p class="text-6xl font-bold tracking-tight">18 min</p>
         <p>The median time from merge to live for a team on Meridian.</p>
-      </c-card>
+      </c-mvp.card>
       <c-quote.card class="bg-base-100" name="Priya Raman" role="Platform lead at Northwind">
         “We stopped asking whether a change had gone out. Meridian had already told everyone.”
       </c-quote.card>
-      <c-card class="bg-base-100">
+      <c-mvp.card class="bg-base-100">
         <p class="font-semibold">Connects to what you already deploy from</p>
         <ul class="flex flex-col gap-3">
           <li class="flex items-center gap-3"><c-icon name="github" class="text-xl" /> GitHub</li>
           <li class="flex items-center gap-3"><c-icon name="gitlab" class="text-xl" /> GitLab</li>
           <li class="flex items-center gap-3"><c-icon name="bitbucket" class="text-xl" /> Bitbucket</li>
         </ul>
-      </c-card>
-      <c-card class="bg-neutral text-neutral-content">
+      </c-mvp.card>
+      <c-mvp.card class="bg-neutral text-neutral-content">
         <p class="text-2xl font-bold tracking-tight dce:text-balance">Ten minutes from this form to your first tracked deploy.</p>
         <p>Connect a repository. The next release shows up on its own.</p>
-      </c-card>
+      </c-mvp.card>
     </c-slot>
   </c-sign-up.bento>
 {% endblock preview %}

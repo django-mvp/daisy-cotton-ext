@@ -11,56 +11,56 @@
 
   <c-demo.live label="From the left" anchor="left">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe class="rounded-box"><img … /></c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe class="mx-auto max-w-3xl rounded-box">
         <img class="dce:aspect-video w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="From the right" anchor="right">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe from="right" class="rounded-box"><img … /></c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe from="right" class="mx-auto max-w-3xl rounded-box">
         <img class="dce:aspect-video w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="From the top" anchor="top">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe from="top" class="rounded-box"><img … /></c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe from="top" class="mx-auto max-w-3xl rounded-box">
         <img class="dce:aspect-video w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="From the bottom" anchor="bottom">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe from="bottom" class="rounded-box"><img … /></c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe from="bottom" class="mx-auto max-w-3xl rounded-box">
         <img class="dce:aspect-video w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="From the centre" anchor="centre">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe from="centre" class="rounded-box"><img … /></c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe from="centre" class="mx-auto max-w-3xl rounded-box">
         <img class="dce:aspect-video w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Held still, no zoom" anchor="still">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe zoom="1" class="rounded-box"><img … /></c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe zoom="1" class="mx-auto max-w-3xl rounded-box">
         <img class="dce:aspect-video w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Beside its copy" anchor="copy">
@@ -68,7 +68,7 @@
   <div>…</div>
   <c-reveal.wipe from="bottom" zoom="1.25" class="rounded-box"><img … /></c-reveal.wipe>
 </div>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <div class="grid items-center gap-10 md:grid-cols-2">
         <div>
           <h3 class="text-3xl font-bold tracking-tight dce:text-balance">Field season 2026</h3>
@@ -78,15 +78,15 @@
           <img class="dce:aspect-square w-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="A ridgeline at dusk" />
         </c-reveal.wipe>
       </div>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Something that is not a picture" anchor="panel">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-reveal.wipe from="centre" zoom="1" class="rounded-box border border-base-300">…</c-reveal.wipe>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="dce:py-24">
+    <c-mvp.container class="dce:py-24">
       <c-reveal.wipe from="centre" zoom="1" class="mx-auto max-w-3xl rounded-box border border-base-300">
         <c-demo.screenshot />
       </c-reveal.wipe>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 {% endblock content %}

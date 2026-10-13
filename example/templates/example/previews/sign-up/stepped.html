@@ -15,12 +15,12 @@
       </c-slot>
       <form method="post" action="?state=verify" class="flex flex-col gap-4">
         {% csrf_token %}
-        <c-form.field label="Code"
-                      id="id_code"
-                      name="code"
-                      autocomplete="one-time-code"
-                      inputmode="numeric"
-                      class="input-lg" />
+        <c-demo.auth.field label="Code"
+                           id="id_code"
+                           name="code"
+                           autocomplete="one-time-code"
+                           inputmode="numeric"
+                           size="lg" />
         <c-button type="submit" variant="primary" class="btn-block" text="Confirm" />
       </form>
       <c-slot name="footer">

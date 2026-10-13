@@ -9,7 +9,7 @@
     </p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <c-demo.tile>
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-stats.change change="12%" />{% endverbatim %}{% endfilter %}</c-slot>
@@ -36,11 +36,11 @@
         <div class="p-6"><c-stats.change change="€212,400.50" /></div>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="In a table" anchor="table">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<td>checkout-api</td><td>31</td><td><c-stats.change change="12%" /></td>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <div class="overflow-x-auto">
         <table class="table">
           <thead><tr><th>Service</th><th>Deploys this month</th><th>Against last month</th></tr></thead>
@@ -51,6 +51,6 @@
           </tbody>
         </table>
       </div>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 {% endblock content %}

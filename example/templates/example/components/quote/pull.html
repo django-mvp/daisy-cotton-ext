@@ -17,7 +17,7 @@
   </c-quote.pull>
   <p>What changed was not courage. A release that could be undone in under a minute stopped being something to plan a week around.</p>
 </article>{% endverbatim %}{% endfilter %}</c-slot>
-<c-container class="py-12">
+<c-mvp.container class="py-12">
 <article class="max-w-prose dce:space-y-6 text-lg leading-relaxed">
   <p>The team had a rule nobody had written down: nothing goes out after Thursday lunch. It had been true for so long that new joiners learned it from the calendar, where Friday was always empty.</p>
   <c-quote.pull name="Amara Okafor" role="Head of Platform, Northwind">
@@ -25,7 +25,7 @@
   </c-quote.pull>
   <p>What changed was not courage. A release that could be undone in under a minute stopped being something to plan a week around.</p>
 </article>
-</c-container>
+</c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Large, with a portrait" anchor="large">
@@ -34,13 +34,13 @@
               src="{% static 'example/people/jonas.svg' %}">
   “Rolling back used to be a meeting. Now it is a button, and nobody remembers the last time we pressed it.”
 </c-quote.pull>{% endverbatim %}{% endfilter %}</c-slot>
-<c-container class="py-12">
+<c-mvp.container class="py-12">
 <c-quote.pull size="lg" variant="accent"
               name="Jonas Lindqvist" role="Staff Engineer, Fjordline"
               src="{% static 'example/people/jonas.svg' %}">
   “Rolling back used to be a meeting. Now it is a button, and nobody remembers the last time we pressed it.”
 </c-quote.pull>
-</c-container>
+</c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="From a published work" anchor="source">
@@ -50,7 +50,7 @@
               href="https://mitpress.mit.edu/9780262510875/">
   “Programs must be written for people to read, and only incidentally for machines to execute.”
 </c-quote.pull>{% endverbatim %}{% endfilter %}</c-slot>
-<c-container class="py-12">
+<c-mvp.container class="py-12">
 <p class="mb-8 max-w-3xl dce:text-base-content/80">With <code>source</code>, the title is marked up as a citation. With <code>href</code> as well, it becomes a link.</p>
 <c-quote.pull variant="neutral"
               name="Harold Abelson"
@@ -58,24 +58,24 @@
               href="https://mitpress.mit.edu/9780262510875/">
   “Programs must be written for people to read, and only incidentally for machines to execute.”
 </c-quote.pull>
-</c-container>
+</c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="A long one" anchor="long">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-quote.pull name="Tomás Rivera" role="Engineering Manager, Alder & Pine">
   “I was sceptical. We had tried two other tools and both wanted the pipeline rebuilt around them. This one took the pipeline we had. In the first week we shipped eleven times, which was more than the whole month before, and the on-call phone stayed quiet. I still don't fully trust that, but it has been six months.”
 </c-quote.pull>{% endverbatim %}{% endfilter %}</c-slot>
-<c-container class="py-12">
+<c-mvp.container class="py-12">
 <c-quote.pull name="Tomás Rivera" role="Engineering Manager, Alder & Pine">
   “I was sceptical. We had tried two other tools and both wanted the pipeline rebuilt around them. This one took the pipeline we had. In the first week we shipped eleven times, which was more than the whole month before, and the on-call phone stayed quiet. I still don't fully trust that, but it has been six months.”
 </c-quote.pull>
-</c-container>
+</c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="The minimum" anchor="minimum">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-quote.pull>“Set it up on a Tuesday. Forgot about it by Thursday. That is the review.”</c-quote.pull>{% endverbatim %}{% endfilter %}</c-slot>
-<c-container class="py-12">
+<c-mvp.container class="py-12">
 <c-quote.pull>“Set it up on a Tuesday. Forgot about it by Thursday. That is the review.”</c-quote.pull>
-</c-container>
+</c-mvp.container>
   </c-demo.live>
 {% endblock content %}

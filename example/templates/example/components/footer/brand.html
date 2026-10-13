@@ -15,7 +15,7 @@
   <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
   …
 </c-footer.brand>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-10">
+    <c-mvp.container class="py-10">
       <c-footer.brand tagline="Releases you can roll back with one click, for teams that ship every day.">
         <c-slot name="logo"><c-demo.logo /></c-slot>
         <c-button ghost size="sm" class="btn-square" icon="github" href="#" aria-label="Meridian on GitHub" />
@@ -23,18 +23,18 @@
         <c-button ghost size="sm" class="btn-square" icon="linkedin" href="#" aria-label="Meridian on LinkedIn" />
         <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
       </c-footer.brand>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Centred, with no social links" anchor="centred">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.brand align="centre" tagline="Releases you can roll back with one click.">
   <c-slot name="logo"><c-demo.logo /></c-slot>
 </c-footer.brand>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-10">
+    <c-mvp.container class="py-10">
       <c-footer.brand align="centre" tagline="Releases you can roll back with one click.">
         <c-slot name="logo"><c-demo.logo /></c-slot>
       </c-footer.brand>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Inside daisy-cotton's own footer" anchor="plain">

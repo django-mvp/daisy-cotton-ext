@@ -15,13 +15,13 @@
   <c-link hover href="#" text="Terms" />
   <c-link hover href="#" text="Imprint" />
 </c-footer.legal>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-10">
+    <c-mvp.container class="py-10">
       <c-footer.legal divided notice="© 2026 Meridian GmbH">
         <c-link hover href="#" text="Privacy" />
         <c-link hover href="#" text="Terms" />
         <c-link hover href="#" text="Imprint" />
       </c-footer.legal>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="With a logo before it and social links after" anchor="ends">
@@ -34,7 +34,7 @@
     …
   </c-slot>
 </c-footer.legal>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-10">
+    <c-mvp.container class="py-10">
       <c-footer.legal notice="© 2026 Meridian GmbH">
         <c-slot name="start"><c-demo.logo /></c-slot>
         <c-link hover href="#" text="Privacy" />
@@ -47,17 +47,17 @@
         <c-button ghost size="sm" class="btn-square" icon="rss" href="#" aria-label="Release notes feed" />
         </c-slot>
       </c-footer.legal>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 
   <c-demo.live label="Centred" anchor="centred">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-footer.legal align="centre" notice="© 2026 Meridian GmbH">…</c-footer.legal>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-10">
+    <c-mvp.container class="py-10">
       <c-footer.legal align="centre" notice="© 2026 Meridian GmbH">
         <c-link hover href="#" text="Privacy" />
         <c-link hover href="#" text="Terms" />
         <c-link hover href="#" text="Imprint" />
       </c-footer.legal>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 {% endblock content %}

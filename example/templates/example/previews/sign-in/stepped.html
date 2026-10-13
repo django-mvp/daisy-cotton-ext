@@ -9,7 +9,7 @@
       <form method="post" action="?state=method" class="flex flex-col gap-4 sm:flex-row sm:items-start">
         {% csrf_token %}
         <div class="flex-1">
-          <c-form.field type="email" id="id_login" name="login" autocomplete="email" class="input-xl" />
+          <c-form.input type="email" id="id_login" name="login" autocomplete="email" size="xl" class="w-full" />
         </div>
         <c-button type="submit" variant="primary" class="btn-xl" text="Continue" />
       </form>
@@ -25,20 +25,20 @@
         {% csrf_token %}
         <input type="hidden" name="login" value="dana@northwind.example" />
         {% if state == "errors" %}
-          <c-form.field type="password"
-                        label="Password"
-                        id="id_password"
-                        name="password"
-                        autocomplete="current-password"
-                        class="input-lg"
-                        errors="The email address and/or password you specified are not correct." />
+          <c-demo.auth.field type="password"
+                             label="Password"
+                             id="id_password"
+                             name="password"
+                             autocomplete="current-password"
+                             size="lg"
+                             errors="The email address and/or password you specified are not correct." />
         {% else %}
-          <c-form.field type="password"
-                        label="Password"
-                        id="id_password"
-                        name="password"
-                        autocomplete="current-password"
-                        class="input-lg" />
+          <c-demo.auth.field type="password"
+                             label="Password"
+                             id="id_password"
+                             name="password"
+                             autocomplete="current-password"
+                             size="lg" />
         {% endif %}
         <a class="link text-sm" href="#">Forgot your password?</a>
         <c-button type="submit" variant="primary" size="lg" text="Sign in" />

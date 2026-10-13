@@ -21,8 +21,7 @@ ALLOWED_HOSTS = ["*"]
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
-# "example" sits above "mvp" so the demo's templates win, and "mvp" above
-# "crispy_tailwind" so its help-text override wins.
+# "example" sits above "mvp" so the demo's templates win.
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -45,7 +44,7 @@ INSTALLED_APPS = [
     # keeps its own copies of the components both packages carry.
     "daisy_cotton",
     "crispy_forms",
-    "crispy_tailwind",
+    "mvp_forms",
 ]
 
 MIDDLEWARE = [
@@ -89,8 +88,8 @@ DATABASES = {
     }
 }
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ["tailwind"]
-CRISPY_TEMPLATE_PACK = "tailwind"
+CRISPY_ALLOWED_TEMPLATE_PACKS = ["daisyui"]
+CRISPY_TEMPLATE_PACK = "daisyui"
 
 FLEX_MENUS = {
     "renderers": {
@@ -157,7 +156,7 @@ MVP_CONFIG = {
             "breakpoint": "lg",
             "collapse": "icons",
         },
-        "navbar": {"desktop": {"end": ["actions.theme-controller"]}},
+        "navbar": {"end": ["mvp.actions.theme-controller"]},
     },
 }
 

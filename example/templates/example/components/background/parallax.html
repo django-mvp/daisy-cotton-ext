@@ -10,7 +10,7 @@
     </p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
       <c-demo.tile>
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-background.parallax speed="0.95"><c-background.image src="…" dim="0.5" /></c-background.parallax>{% endverbatim %}{% endfilter %}</c-slot>
@@ -37,7 +37,7 @@
         </c-hero.centred>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="A picture, at full width" anchor="picture">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-hero.centred invert size="screen" title="…">

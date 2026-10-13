@@ -13,7 +13,7 @@
     </p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <c-demo.tile>
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-stats.trend-centred title="Deploys a day" value="31" change="12%" desc="since last month" />{% endverbatim %}{% endfilter %}</c-slot>
@@ -48,14 +48,14 @@
         <c-stat.group class="w-full"><c-stats.trend-centred title="Northern region" value="€84k" change="6%" desc="since last quarter"><c-slot name="figure"><img class="dce:size-12 rounded-full object-cover" src="{% static 'example/ridgeline.svg' %}" alt="" /></c-slot></c-stats.trend-centred></c-stat.group>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 
   <c-demo.live label="Three in a group" anchor="row">
     <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-stat.group class="w-full">
   <c-stats.trend-centred icon="deploys" title="Deploys a day" value="31" change="12%" desc="since last month" />
   …
 </c-stat.group>{% endverbatim %}{% endfilter %}</c-slot>
-    <c-container class="py-16">
+    <c-mvp.container class="py-16">
       <div class="overflow-x-auto">
         <c-stat.group class="w-full">
           <c-stats.trend-centred icon="deploys" title="Deploys a day" value="31" change="12%" desc="since last month" />
@@ -63,6 +63,6 @@
           <c-stats.trend-centred icon="failed" title="Failed deploys" value="7" change="3" inverse desc="since last week" />
         </c-stat.group>
       </div>
-    </c-container>
+    </c-mvp.container>
   </c-demo.live>
 {% endblock content %}

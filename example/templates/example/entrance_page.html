@@ -28,13 +28,13 @@
 
   {% for slug, label in component.states %}
     <section class="border-t border-base-300">
-      <c-container class="flex flex-wrap items-center justify-between gap-4 py-6">
+      <c-mvp.container class="flex flex-wrap items-center justify-between gap-4 py-6">
         <h2 id="{{ slug }}" class="text-sm font-semibold dce:tracking-widest dce:text-base-content/80 uppercase">{{ label }}</h2>
         <a class="btn btn-sm btn-outline"
            href="{% url 'preview' family=family.slug component=component.slug %}?state={{ slug }}"
            target="_blank"
            rel="noopener noreferrer">Open as a full page</a>
-      </c-container>
+      </c-mvp.container>
       {# A frame, so the block answers to its own width and not to the sidebar's. #}
       <iframe class="block w-full border-t border-b border-base-300"
               style="height: 52rem"
@@ -45,10 +45,10 @@
   {% endfor %}
 
   <section class="border-t border-base-300">
-    <c-container class="py-8">
+    <c-mvp.container class="py-8">
       <h2 class="text-sm font-semibold dce:tracking-widest dce:text-base-content/80 uppercase">The page that drew these</h2>
       <pre class="mt-4 w-full overflow-x-auto rounded-lg border border-base-300 bg-base-200 p-4 text-xs"><code>{{ source }}</code></pre>
-    </c-container>
+    </c-mvp.container>
   </section>
 {% endblock content %}
 

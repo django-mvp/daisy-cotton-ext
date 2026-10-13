@@ -1,4 +1,4 @@
-{# @description A stand-in for allauth's sign-up form, built from the base field, alert and button components. Posting it shows the error state. #}
+{# @description A stand-in for allauth's sign-up form, built from the base fieldset, label, input, alert and button components. Posting it shows the error state. #}
 {# @prop state:text | description:"errors draws the form as it comes back with two fields refused" #}
 {# @prop submit:text | default:"Create account" | description:"The button's words" #}
 {# @prop action:text | default:"?state=errors" | description:"Where the stand-in form posts to" #}
@@ -15,31 +15,31 @@
         </ul>
       </div>
     </c-alert>
-    <c-form.field type="email"
-                  label="Email"
-                  id="id_email"
-                  name="email"
-                  autocomplete="email"
-                  value="dana@northwind.example"
-                  errors="A user is already registered with this email address."
-                  only />
-    <c-form.field type="password"
-                  label="Password"
-                  id="id_password1"
-                  name="password1"
-                  autocomplete="new-password"
-                  errors="This password is too short. It must contain at least 8 characters."
-                  only />
+    <c-demo.auth.field type="email"
+                       label="Email"
+                       id="id_email"
+                       name="email"
+                       autocomplete="email"
+                       value="dana@northwind.example"
+                       errors="A user is already registered with this email address."
+                       only />
+    <c-demo.auth.field type="password"
+                       label="Password"
+                       id="id_password1"
+                       name="password1"
+                       autocomplete="new-password"
+                       errors="This password is too short. It must contain at least 8 characters."
+                       only />
   {% else %}
-    <c-form.field type="email" label="Email" id="id_email" name="email" autocomplete="email" only />
-    <c-form.field type="password"
-                  label="Password"
-                  id="id_password1"
-                  name="password1"
-                  autocomplete="new-password"
-                  help-text="At least 8 characters, and not only numbers."
-                  only />
+    <c-demo.auth.field type="email" label="Email" id="id_email" name="email" autocomplete="email" only />
+    <c-demo.auth.field type="password"
+                       label="Password"
+                       id="id_password1"
+                       name="password1"
+                       autocomplete="new-password"
+                       help-text="At least 8 characters, and not only numbers."
+                       only />
   {% endif %}
-  <c-form.field type="password" label="Password again" id="id_password2" name="password2" autocomplete="new-password" only />
+  <c-demo.auth.field type="password" label="Password again" id="id_password2" name="password2" autocomplete="new-password" only />
   <c-button type="submit" variant="primary" class="btn-block" :text="submit" only />
 </form>

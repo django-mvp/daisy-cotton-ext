@@ -37,7 +37,7 @@ Issues = "https://github.com/django-mvp/daisy-cotton-ext/issues"
 dev = [
     "mvp-shared[dev,test]",
     # A ready-made daisyUI and Cotton host for the example project.
-    "django-mvp>=0.23.0",
+    "django-mvp>=0.28.2",
     # Development only, and mounted under DEBUG: it serves component source and
     # evaluates URL parameters through the template engine.
     "django-cotton-gallery>=1.0.0,<2.0.0",

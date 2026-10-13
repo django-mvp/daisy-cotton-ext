@@ -8,7 +8,7 @@
     <p class="mt-4 max-w-3xl dce:text-base-content/80">A logo usually takes its tone and size from the block it is in. Set them on the logo itself for one that stands alone, or one that should differ from its neighbours. Try each row on a dark theme.</p>
   </c-demo.head>
 
-  <c-container class="pb-10">
+  <c-mvp.container class="pb-10">
     <div class="mt-6 grid grid-cols-1 gap-6">
       <c-demo.tile>
         <c-slot name="markup">{% filter force_escape %}{% verbatim %}<c-logos.logo src="…" name="Northwind" tone="original" />{% endverbatim %}{% endfilter %}</c-slot>
@@ -41,5 +41,5 @@
         </div>
       </c-demo.tile>
     </div>
-  </c-container>
+  </c-mvp.container>
 {% endblock content %}

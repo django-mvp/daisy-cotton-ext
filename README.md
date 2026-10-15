@@ -1,8 +1,17 @@
 # daisy-cotton-ext
 
-[![Tests](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/tests.yml/badge.svg)](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/tests.yml) [![Coverage](https://codecov.io/gh/django-mvp/daisy-cotton-ext/branch/main/graph/badge.svg)](https://codecov.io/gh/django-mvp/daisy-cotton-ext) ![Python 3.12 | 3.13](https://img.shields.io/badge/python-3.12%20%7C%203.13-blue) ![Django 5.2 | 6.0 | 6.1](https://img.shields.io/badge/django-5.2%20%7C%206.0%20%7C%206.1-blue) [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/django-mvp/daisy-cotton-ext/blob/main/LICENSE)
+[![Tests](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/tests.yml/badge.svg)](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/tests.yml)
+[![Build](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/build.yml/badge.svg)](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/build.yml)
+[![Publish](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/publish.yml/badge.svg)](https://github.com/django-mvp/daisy-cotton-ext/actions/workflows/publish.yml)
+[![Coverage](https://codecov.io/gh/django-mvp/daisy-cotton-ext/branch/main/graph/badge.svg)](https://codecov.io/gh/django-mvp/daisy-cotton-ext)
+[![PyPI](https://img.shields.io/pypi/v/daisy-cotton-ext)](https://pypi.org/project/daisy-cotton-ext/)
+[![Development status](https://img.shields.io/pypi/status/daisy-cotton-ext)](https://pypi.org/project/daisy-cotton-ext/)
+[![Python](https://img.shields.io/pypi/pyversions/daisy-cotton-ext)](https://pypi.org/project/daisy-cotton-ext/)
+[![Django](https://img.shields.io/pypi/djversions/daisy-cotton-ext)](https://pypi.org/project/daisy-cotton-ext/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Licence](https://img.shields.io/github/license/django-mvp/daisy-cotton-ext)](https://github.com/django-mvp/daisy-cotton-ext/blob/main/LICENSE)
 
-Extended components and page blocks for django-cotton and daisyUI.
+Extended components and page blocks for django-cotton and daisyUI, built on daisy-cotton.
 
 Built on [django-cotton](https://django-cotton.com/) and [daisyUI](https://daisyui.com/). [daisy-cotton](https://github.com/django-mvp/daisy-cotton) holds one Cotton component for each daisyUI component. This package holds what is built on top of those, and it comes in two kinds:
 
@@ -156,7 +165,7 @@ It has a `background` slot of its own, which puts a background block behind that
 
 A section can sit inside another, or inside a column. The inner one adds no gutters and no room above or below, and keeps the copy colour of the section around it, so an outer section can carry a background across the page while an inner one holds the text to `narrow`.
 
-Columns are for a small, fixed number of parts that stack at one breakpoint. A row of many cards that should go from four across to two to one is a grid, and is not what this is for. The reasoning is in [ADR 0011](docs/adr/0011-a-sections-columns-are-counted-by-the-stylesheet.md).
+Columns are for a small, fixed number of parts that stack at one breakpoint. A row of many cards that should go from four across to two to one is a grid, and is not what this is for. The reasoning is in [ADR 0011](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0011-a-sections-columns-are-counted-by-the-stylesheet.md).
 
 ### Heading
 
@@ -315,7 +324,7 @@ Things to know before reaching for one:
 - **Nothing pauses a looping effect.** A page that has to meet WCAG 2.2.2 sets `repeat` on each one, or supplies its own control.
 - **A screen reader is given the words once**, whichever effect is drawing them and however many copies or letters it draws.
 
-The reasoning is in [ADR 0005](docs/adr/0005-text-effects-are-spans-moved-by-css.md).
+The reasoning is in [ADR 0005](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0005-text-effects-are-spans-moved-by-css.md).
 
 ### Reveals
 
@@ -372,7 +381,7 @@ Things to know before using one:
 - **Hover is reachable without a mouse.** The frame takes keyboard focus and the caption stays open while anything inside it has focus. Where the device has no hover, the caption shows all the time.
 - **Give each stacked panel a solid surface,** or the one underneath shows through.
 
-The reasoning is in [ADR 0006](docs/adr/0006-reveals-follow-the-scroll-position.md).
+The reasoning is in [ADR 0006](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0006-reveals-follow-the-scroll-position.md).
 
 ### Quotes
 
@@ -418,7 +427,7 @@ Things to know before using one:
 - **A wall reads down each column, not across.** That is what lets long and short quotations sit together without gaps. Put them in a grid when the order across matters.
 - **Centred and split take a `background` slot,** like the heroes, and `invert` for a dark one.
 
-The reasoning for building on daisy-cotton's components is in [ADR 0007](docs/adr/0007-built-from-daisy-cotton-components.md).
+The reasoning for building on daisy-cotton's components is in [ADR 0007](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0007-built-from-daisy-cotton-components.md).
 
 ### Stats
 
@@ -469,7 +478,7 @@ Things to know before using one:
 - **Nothing else here moves unless asked.** `cascade` on a band and `speed` on a headline are both off by default.
 - **The band takes a `background` slot,** like the heroes, and `invert` for a dark one.
 
-The reasoning is in [ADR 0008](docs/adr/0008-stats-draw-no-charts.md) and [ADR 0009](docs/adr/0009-a-count-is-started-by-scroll-and-timed-by-the-clock.md).
+The reasoning is in [ADR 0008](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0008-stats-draw-no-charts.md) and [ADR 0009](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0009-a-count-is-started-by-scroll-and-timed-by-the-clock.md).
 
 ### Footers
 
@@ -532,7 +541,7 @@ Things to know before using one:
 - **Anything left out leaves nothing behind.** No logo, tagline or social links, and the columns take the full width. No notice and no small links, and there is no copyright line or rule.
 - **The two parts work on their own.** Use `<c-footer.brand>` and `<c-footer.legal>` inside daisy-cotton's `<c-footer>`, or under a footer you lay out yourself.
 
-The reasoning is in [ADR 0013](docs/adr/0013-a-footer-block-is-the-footer-element.md).
+The reasoning is in [ADR 0013](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0013-a-footer-block-is-the-footer-element.md).
 
 ### Logos and the marquee
 
@@ -595,7 +604,7 @@ Things to know before using one:
 - **Rows and tiers take their rows from you.** `<c-logos.rows>` and `<c-logos.split>` hold one `<c-marquee>` for each row, and `<c-logos.tiers>` holds one `<c-logos.tier>` for each level.
 - **The pause control needs daisyUI's `btn`, `btn-ghost`, `btn-sm` and `btn-circle` from the project,** and the tile needs `card`.
 
-The reasoning is in [ADR 0014](docs/adr/0014-a-marquee-moves-by-css-and-can-always-be-stopped.md) and [ADR 0003](docs/adr/0003-amounts-are-numbers-written-to-style.md).
+The reasoning is in [ADR 0014](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0014-a-marquee-moves-by-css-and-can-always-be-stopped.md) and [ADR 0003](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0003-amounts-are-numbers-written-to-style.md).
 
 Every attribute, its accepted values and its default are listed on each block's and component's own page in the example project, built from the annotations in the block's template. Run it with `python manage.py runserver` from a checkout.
 
@@ -668,7 +677,7 @@ Things to know before using one:
 - **`<c-sign-up.stepped>` takes the whole run of steps in its `steps` slot.** daisy-cotton's `<c-steps>` is the obvious thing to put there.
 - **`<c-auth.panel>` is for a page none of these covers:** a password reset, a code to confirm. It draws the same structure, with a card around it when given `card`.
 
-Why the blocks stop at the frame is in [ADR 0010](docs/adr/0010-sign-in-pages-own-the-frame-and-not-the-form.md).
+Why the blocks stop at the frame is in [ADR 0010](https://github.com/django-mvp/daisy-cotton-ext/blob/main/docs/adr/0010-sign-in-pages-own-the-frame-and-not-the-form.md).
 
 ### Points
 

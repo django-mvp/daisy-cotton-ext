@@ -11,7 +11,7 @@
   },
   "$comment": "`build` and `test` keep those names so tooling that looks for them finds them. `test` is the check the Stylesheet workflow runs, so a stale committed stylesheet fails locally first.",
   "devDependencies": {
-    "@tailwindcss/cli": "4.3.3",
-    "tailwindcss": "4.3.3"
+    "@tailwindcss/cli": "4.3.4",
+    "tailwindcss": "4.3.4"
   }
 }

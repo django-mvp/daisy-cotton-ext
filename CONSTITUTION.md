@@ -19,7 +19,9 @@ infrastructure each require a stated justification. YAGNI over speculation.
 
 No wrapper layers, base classes or future-proofing indirection without a present, concrete second
 use. Prefer duplication over the wrong abstraction. A block that is nearly another block is still
-its own template until a third one proves the shared shape.
+its own template until a third one proves the shared shape. A second use also counts as present
+when it is in another approved specification built in the same batch, such as several features
+specified together from one prototype.
 
 ### Article IV — Integration-First
 
@@ -268,4 +270,4 @@ first. Do not cite it as an enforced standard until it runs in CI.
 
 ---
 
-**Version**: 3.2.0 | **Ratified**: 2026-09-17 | **Last Amended**: 2026-10-12
+**Version**: 3.2.1 | **Ratified**: 2026-09-17 | **Last Amended**: 2026-11-11
